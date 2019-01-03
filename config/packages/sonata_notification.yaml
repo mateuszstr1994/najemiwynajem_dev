@@ -3,3 +3,5 @@ sonata_notification:
         register_default: false
     admin:
         enabled: false
+    class:
+        message: App\Application\Sonata\NotificationBundle\Entity\Message

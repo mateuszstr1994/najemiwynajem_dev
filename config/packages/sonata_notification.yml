@@ -1,9 +1,0 @@
-## YAML Template.
----
-# config/packages/sonata_notification.yaml
-
-sonata_notification:
-    admin:
-        enabled: false
-    class:
-        message: App\Application\Sonata\NotificationBundle\Entity\Message

@@ -1,7 +1,3 @@
-sonata_block:
-    context_manager: sonata.page.block.context_manager
-    default_contexts: [sonata_page_bundle]
-
 sonata_admin:
     assets:
         extra_javascripts:
@@ -76,7 +72,7 @@ sonata_page:
         fatal:     [500]    # so you can use the same page for different http errors or specify specific page for each error
 
     class:
-        page: 'App\Entity\SonataPagePage'
-        snapshot: 'App\Entity\SonataPageSnapshot'
-        block: 'App\Entity\SonataPageBlock'
-        site: 'App\Entity\SonataPageSite'
+        page: App\Application\Sonata\PageBundle\Entity\Page # This is an optional value
+        snapshot: App\Application\Sonata\PageBundle\Entity\Snapshot
+        block: App\Application\Sonata\PageBundle\Entity\Block
+        site: App\Application\Sonata\PageBundle\Entity\Site

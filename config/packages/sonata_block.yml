@@ -1,0 +1,11 @@
+## YAML Template.
+---
+# config/packages/sonata_block.yaml
+
+sonata_block:
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+    context_manager: sonata.page.block.context_manager
+    default_contexts: [sonata_page_bundle]
