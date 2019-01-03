@@ -24,4 +24,11 @@ return [
     FOS\UserBundle\FOSUserBundle::class => ['all' => true],
     Sonata\UserBundle\SonataUserBundle::class => ['all' => true],
     App\Application\Sonata\UserBundle\ApplicationSonataUserBundle::class => ['all' => true],
+    Sonata\CacheBundle\SonataCacheBundle::class => ['all' => true],
+    Sonata\SeoBundle\SonataSeoBundle::class => ['all' => true],
+    Sonata\NotificationBundle\SonataNotificationBundle::class => ['all' => true],
+    App\Application\Sonata\NotificationBundle\ApplicationSonataNotificationBundle::class => ['all' => true],
+    Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle::class => ['all' => true],
+    Sonata\PageBundle\SonataPageBundle::class => ['all' => true],
+    App\Application\Sonata\PageBundle\ApplicationSonataPageBundle::class => ['all' => true],
 ];

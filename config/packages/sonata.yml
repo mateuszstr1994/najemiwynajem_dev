@@ -1,6 +1,14 @@
 ## YAML Template.
----
-sonata_user:
-    class:
-        user: App\Application\Sonata\UserBundle\Entity\User
-        group: App\Application\Sonata\UserBundle\Entity\Group
+---     
+sonata_block:
+    context_manager: sonata.page.block.context_manager
+    default_contexts: [sonata_page_bundle]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        #sonata.admin_doctrine_orm.block.audit:
+        #    contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.rss:
+
