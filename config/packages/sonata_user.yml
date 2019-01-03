@@ -1,0 +1,5 @@
+## YAML Template.
+---
+sonata_user:
+    security_acl: false
+    manager_type: orm # can be orm or mongodb
