@@ -11,24 +11,43 @@ file that was distributed with this source code.
 {% extends '@SonataPage/base_layout.html.twig' %}
 
 {% block sonata_page_container %}
-    <header class="container-fluid">
-       header
-    </header>
     
-    <section class="container-fluid">
-        <div class="row ">
-            {% block page_content %}
-                {% if content is defined %}
-                    {{ content|raw }}
-                {% endif %}
-            {% endblock %}
-        </div>
-    </section>
-        
-    <footer class="container-fluid">
+    <header class="container-fluid page-header">
         <div class="row">
-            {{ sonata_page_render_container('footer', 'global') }}
-        </div>
-    </footer>
+            {{ sonata_page_render_container('header') }}
+        </div>    
+    </header>
 
+    {% if page is defined %}
+        <div class="row">
+            {% if page.name != 'global'%}
+                {{ sonata_page_render_container('content_top', 'global') }}
+            {% endif %}
+            {{ sonata_page_render_container('content_top', page) }}
+        </div>
+    {% endif %}
+
+    <div class="container-fluid">
+        {{ sonata_page_render_container('content', page) }}
+        
+        {% block page_content %}
+            {% if content is defined %}
+                {{ content|raw }}
+            {% endif %}
+        {% endblock %}
+    </div>
+
+    {% if page is defined %}
+        <div class="row">
+            {{ sonata_page_render_container('content_bottom', page) }}
+            {% if page.name != 'global'%}
+                {{ sonata_page_render_container('content_bottom', 'global') }}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <footer class="row">
+        {{ sonata_page_render_container('footer', page) }}
+    </footer>
+    
 {% endblock %}
