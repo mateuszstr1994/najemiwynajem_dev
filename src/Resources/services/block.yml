@@ -1,0 +1,23 @@
+## YAML Template.
+---
+services:
+    
+    ptd.usernav.block:
+        class: App\Block\UserNavBlokService
+        public: true
+        arguments:
+            - 'ptd.usernav.block'
+            - '@templating'
+            - '@service_container'
+        tags:
+            - { name: sonata.block }
+            
+    header.default.block:
+        class: App\Block\HeaderDefaultService
+        public: true
+        arguments:
+            - 'header.default.block'
+            - '@templating'
+            - '@service_container'
+        tags:
+            - { name: sonata.block }

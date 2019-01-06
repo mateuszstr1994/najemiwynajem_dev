@@ -12,9 +12,13 @@ file that was distributed with this source code.
 
 {% block sonata_page_container %}
     
-    <header class="container-fluid page-header">
+    <header class="container-fluid page-header header-default">
         <div class="row">
-            {{ sonata_page_render_container('header') }}
+            {{ sonata_page_render_container('header', page) }}
+            {{ sonata_block_render({ 'type': 'header.default.block' }, {
+                'title' : 'Users'
+                }) 
+            }}
         </div>    
     </header>
 

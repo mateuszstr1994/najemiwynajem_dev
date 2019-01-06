@@ -23,9 +23,18 @@ doctrine:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        
         mappings:
             SonataUserBundle: ~
             FOSUserBundle: ~
             ApplicationSonataPageBundle: ~ # only once the ApplicationSonataPageBundle is generated
             SonataPageBundle: ~
+            SomeEntityNamespace:
+                    type: annotation
+                    dir: '%kernel.project_dir%/src/Entity/Main'
+                    is_bundle: false
+                    prefix: App\Entity
+                    alias: App
+            
+            
             
