@@ -11,10 +11,11 @@ file that was distributed with this source code.
 {% extends '@SonataPage/base_layout.html.twig' %}
 
 {% block sonata_page_container %}
+    <header class="container-fluid">
+       header
+    </header>
     
-   
-
-    <div class="container-fluid">
+    <section class="container-fluid">
         <div class="row ">
             {% block page_content %}
                 {% if content is defined %}
@@ -22,7 +23,7 @@ file that was distributed with this source code.
                 {% endif %}
             {% endblock %}
         </div>
-    </div>
+    </section>
         
     <footer class="container-fluid">
         <div class="row">

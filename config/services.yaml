@@ -11,6 +11,8 @@ parameters:
     database_name: najemiwynajem
     database_user: root
     database_password: null
+    sonata.page.admin.site.class: App\Application\Sonata\PageBundle\Admin\SiteAdmin
+    sonata.page.route.page.generator.class: App\Application\Sonata\PageBundle\Route\RoutePageGenerator
 
 services:
     # default configuration for services in *this* file

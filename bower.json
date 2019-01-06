@@ -1,0 +1,14 @@
+{
+  "name": "najemiwynajem",
+  "homepage": "https://github.com/mateuszstr1994/najemiwynajem_dev",
+  "authors": [
+    "Mateusz <mateuszstr1994@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1"
+  }
+}

@@ -19,7 +19,7 @@ file that was distributed with this source code.
         {{ sonata_seo_title() }}
         {{ sonata_seo_metadatas() }}
         {% block sonata_page_stylesheets_my %}
-                <link rel="stylesheet" href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}">
+                <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
         {% endblock %}
     </head>
 {% endblock %}
@@ -32,9 +32,9 @@ file that was distributed with this source code.
         {% block page_container %}{% endblock %} {# Deprecated block #}
     {% endblock %}
 
-    {% block sonata_page_asset_footer_my %}
-        <script src="{{ asset('assets/jQuery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    {% block sonata_page_asset_footer %}
+        <script src="{{ asset('assets/bower_components/jQuery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     {% endblock %}
         
         <!-- monitoring:3e9fda56df2cdd3b039f189693ab7844fbb2d4f6 -->

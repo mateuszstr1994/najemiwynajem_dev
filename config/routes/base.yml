@@ -1,0 +1,5 @@
+## YAML Template.
+---
+homepage:
+    path:     /
+    controller: App\Controller\HomePageController::index
