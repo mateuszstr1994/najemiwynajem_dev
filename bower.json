@@ -9,6 +9,8 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^4.2.1",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "components-font-awesome": "^5.4.2",
+    "popper.js": "^1.14.6"
   }
 }

@@ -1,0 +1,72 @@
+//domieszki
+
+@mixin set_max_width($value){
+	max-width:$value;
+}
+
+@mixin set_width($value){
+	width:$value;
+}
+
+@mixin set_max_height($value){
+	max-height:$value;
+}
+
+@mixin set_height($value){
+	height:$value;
+}
+
+@mixin set_padding($value){
+	padding:$value;
+}
+
+@mixin set_padding_top($value){
+	padding-top:$value;
+}
+
+@mixin set_padding_left($value){
+	padding-left:$value;
+}
+
+@mixin set_padding_right($value){
+	padding-right:$value;
+}
+
+@mixin set_padding_bottom($value){
+	padding-bottom:$value;
+}
+
+@mixin set_letter_spacing($value){
+	letter-spacing:$value;
+}
+
+
+
+@mixin set_grid_typical($template:(1fr 5fr), $grid:grid ,$align-items: center, $justify-content:stretch,  $justify-items:center, ){
+	display:$grid;
+	grid-template-columns: $template;
+	align-items: $align-items;
+	justify-items: $justify-items;
+
+}
+
+@mixin set_grid($count_column:$count_column, $grid:grid,  $align-items: center, $justify-content:stretch,  $justify-items:center){
+	    display: $grid;
+	    grid-template-columns: repeat($count_column, 1fr);
+	    justify-content: $justify-content;
+	    align-items: $align-items;
+	    justify-items: $justify-items; 
+}
+
+@mixin default-legend-form($color: $color-red, $padding-bottom: $default-padding-bottom, $font-size: $font-size-big){
+	padding-bottom: $padding-bottom;
+	border-bottom: solid 2px $color;
+	padding-left: $default-padding-bottom;
+	margin-bottom:0.75em;
+	font-size:$font-size;
+	font-weight:600;
+	color: $color-black;
+	letter-spacing: $letter-spacing-big;
+
+}
+

@@ -1,0 +1,193 @@
+// podstawowe style bazowe 
+@import 'partials/_mixins';
+@import 'partials/_variables';
+
+// max-width w % co 2%
+$i:0;
+@while $i < 100{
+	.mw-#{$i}{ @include set_max_width($i * 1%)};
+	$i:$i+2;
+};
+
+// width w % co 5%
+$i:0;
+@while $i < 100{
+	.w-#{$i}{ @include set_width($i * 1%)};
+	$i:$i+5;
+};
+
+// max height co 5%
+$i:0;
+@while $i < 100{
+	.mh-#{$i}{ @include set_max_height($i * 1%)};
+	$i:$i+5;
+};
+
+
+//height co 5%
+$i:0;
+@while $i < 100{
+	.h-#{$i}{ @include set_height($i * 1%)};
+	$i:$i+5;
+};
+
+//padding zwiekszany o 0.25rem
+$i:0;
+@while $i < 20{
+	$step: 0.25rem;
+	.p-#{$i}{ @include set_padding($i * $step)};
+	$i:$i+1;
+};
+
+//padding top
+$i:0;
+@while $i < 20{
+	$step: 0.25rem;
+	.pt-#{$i}{ @include set_padding_top($i * $step)};
+	$i:$i+1;
+};
+
+//padding lewy
+$i:0;
+@while $i < 20{
+	$step: 0.25rem;
+	.pl-#{$i}{ @include set_padding_left($i * $step)};
+	$i:$i+1;
+};
+
+//padding prawy
+$i:0;
+@while $i < 20{
+	$step: 0.25rem;
+	.pr-#{$i}{ @include set_padding_right($i * $step)};
+	$i:$i+1;
+};
+
+//padding dolny
+$i:0;
+@while $i < 20{
+	$step: 0.25rem;
+	.pb-#{$i}{ @include set_padding_bottom($i * $step)};
+	$i:$i+1;
+};
+
+$i:0;
+@while $i < 20{
+	$step: 0.10px;
+	.letter-spacing-#{$i}{ @include set_letter_spacing($i * $step)};
+	$i:$i+1;
+};
+
+$i:0;
+@while $i < 30{
+	$step: 0.10rem;
+	.f-s-#{$i}{ 
+		font-size: $i* $step;
+	};
+	$i:$i+1;
+};
+
+body.body-primary  {
+  margin: 0px;
+  padding: 0px;
+  font-size: 14px;
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: $color-gray-primary; }
+
+#LogoImg{
+	max-width:200px;
+	max-height:60px;
+	min-width:150px;
+	min-width:75px;
+}
+
+.sticky-border-default{
+	box-shadow: 0px 3px 3px 0px #c1c1c152;
+}
+
+.bg-white{
+	background-color: $color-white;
+}
+
+.border-primary{
+	border: 1px solid $border-color-primary !important; 
+}
+
+
+.btn-primary{
+	background-color: $second-color !important;
+	border:1px solid $second-color !important;
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-white;
+	font-size:$font-size-small !important;
+}
+
+.btn-black{
+	background-color: $color-white !important;
+	border:1px solid $color-white !important;
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-black;
+	border-radius:0px !important;
+	font-size:$font-size-small-5 !important;
+	&:focus{
+		box-shadow:none;
+	}
+}
+
+.btn-login-menu{
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-black;
+	padding:0.25rem;
+	border-radius:0px !important;
+	font-size:$font-size-small-5 !important;
+
+}
+
+.h1-form{
+	font-size:$font-size-huge;
+	padding-top:$s-4;
+	padding-bottom:$s-4;
+	display: inline-block;
+	background-color: $color-red;
+	color:$color-white
+
+	
+}
+
+.div-fiszka-large{
+	
+	@include breakpoint($mobile){
+		width: 100%;
+	}
+
+	@include breakpoint($tablet){
+		width: 50%;
+	}
+    overflow: hidden;
+    position: relative;
+	
+	&:after{
+    	position: absolute;
+    	content: "";
+    	width: 0;
+    	height: 0;
+    	border-bottom: 60px solid #f6200f;
+    	border-right: 60px solid transparent;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,6 +14,9 @@ parameters:
     sonata.page.admin.site.class: App\Application\Sonata\PageBundle\Admin\SiteAdmin
     sonata.page.route.page.generator.class: App\Application\Sonata\PageBundle\Route\RoutePageGenerator
 
+imports:
+    - { resource: '../src/Resources/services/block.yml' }
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -35,6 +38,23 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    admin.menu:
+        class: App\Admin\MenuAdmin
+        arguments: [~, App\Entity\Main\Menu, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Menu, label: Menu }
+        public: true
 
-imports:
-    - { resource: '../src/Resources/services/block.yml' }
+    admin.menu_item:
+        class: App\Admin\MenuItemAdmin
+        arguments: [~, App\Entity\Main\MenuItem, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Menu, label: MenuItem }
+        public: true
+
+    admin.country:
+        class: App\Admin\CountryAdmin
+        arguments: [~, App\Entity\Main\Country, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Settings, label: Country }
+        public: true
