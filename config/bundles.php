@@ -31,4 +31,5 @@ return [
     Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle::class => ['all' => true],
     Sonata\PageBundle\SonataPageBundle::class => ['all' => true],
     App\Application\Sonata\PageBundle\ApplicationSonataPageBundle::class => ['all' => true],
+    
 ];
