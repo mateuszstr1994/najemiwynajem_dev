@@ -31,6 +31,7 @@ doctrine:
             FOSUserBundle: ~
             ApplicationSonataPageBundle: ~ # only once the ApplicationSonataPageBundle is generated
             SonataPageBundle: ~
+            ApplicationSonataUserBundle: ~
             SomeEntityNamespace:
                     type: annotation
                     dir: '%kernel.project_dir%/src/Entity/Main'

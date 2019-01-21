@@ -8,3 +8,5 @@ sonata_cache_cache:
     
 fos_user: 
      resource: "@FOSUserBundle/Resources/config/routing/all.xml" 
+     
+     

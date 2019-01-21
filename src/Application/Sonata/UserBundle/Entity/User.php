@@ -2,7 +2,7 @@
 
 namespace App\Application\Sonata\UserBundle\Entity;
 
-use Sonata\UserBundle\Entity\BaseUser as BaseUser;
+use Sonata\UserBundle\Entity\BaseUser;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -21,16 +21,27 @@ class User extends BaseUser
      */
     protected $id;
 
-    
-    
-    
     /**
      * Get id.
      *
      * @return int $id
      */
+    
+    protected $people;
+    
     public function getId()
     {
         return $this->id;
     }
+    
+    function getPeople() {
+        return $this->people;
+    }
+
+    function setPeople($people) {
+        $this->people = $people;
+    }
+
+
+    
 }

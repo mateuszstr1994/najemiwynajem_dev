@@ -42,21 +42,26 @@ services:
         class: App\Admin\MenuAdmin
         arguments: [~, App\Entity\Main\Menu, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Menu, label: Menu }
+            - { name: sonata.admin, manager_type: orm, group: Menu, label: Menu, icon: "<i class=\"mr-2 fas  fa-bars\"></i>" }
         public: true
 
     admin.menu_item:
         class: App\Admin\MenuItemAdmin
         arguments: [~, App\Entity\Main\MenuItem, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Menu, label: MenuItem }
+            - { name: sonata.admin, manager_type: orm, group: Menu, label: MenuItem, icon: "<i class=\"mr-2 fas fa-bars\"></i>" }
         public: true
 
     admin.country:
         class: App\Admin\CountryAdmin
         arguments: [~, App\Entity\Main\Country, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Settings, label: Country }
+            - { name: sonata.admin, manager_type: orm, group: Settings, label: Country, icon: "<i class=\"mr-2 fas fa-cogs\"></i>" }
         public: true
-        
-   
+
+    admin.people:
+        class: App\Admin\PeopleAdmin
+        arguments: [~, App\Entity\Main\People, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: People, label: People, icon: "<i class=\"mr-2 fa fa-users\"></i>" }
+        public: true

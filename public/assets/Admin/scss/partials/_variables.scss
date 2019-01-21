@@ -1,0 +1,57 @@
+// zmienne
+
+
+
+$color-blue: #025EC3;
+$color-dark-blue:#0754A9;
+$color-white: #ffffff;
+$color-red:#F6200F;
+$color-black: #000000;
+
+$color-primary:$color-red;
+
+
+$default-padding-bottom: 0.5em;
+$color-gray-primary: #eceff1;
+$color-gray: #ced4da;
+$font-weight: 600;
+
+$font-weight-form-bold:600;
+
+$color-dark-gray: #d0d0d0;
+
+$letter-spacing-big:0.75px;
+
+
+$s-1: 0.25rem;
+$s-2: 0.5rem;
+$s-3: 0.75rem;
+$s-4: 1rem;
+$s-5: 1.25rem;
+$s-6: 1.5rem;
+$s-7: 1.75rem;
+$s-8: 2rem;
+$s-9: 2.25rem;
+$default-radius: 5px;
+
+$first-color:$color-blue; // kolor główny
+$second-color:$color-red; // kolor drugi
+$third-color:$color-dark-blue; // kolor trzeci
+$fourth-color:$color-black; // kolor trzeci
+$border-color-primary: $color-dark-gray;
+
+$font-size-very-small: 0.8rem;
+$font-size-small: 0.9rem;
+$font-size-small-5: 0.95rem;
+$font-size-normal: 1rem;
+$font-size-big: 1.1rem;
+$font-size-big2: 1.2rem;
+$font-size-large: 1.3rem;
+$font-size-huge:1.5rem;
+
+$breakpoint-to-ems:true; // co to robi
+$mobile: 320px;
+$tablet: 768px;
+$desktop-m: 992px;
+$desktop-lg: 1200px;
+

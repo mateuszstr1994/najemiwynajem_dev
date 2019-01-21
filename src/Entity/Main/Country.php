@@ -3,6 +3,8 @@
 namespace App\Entity\Main;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Main\CountryRepository")
@@ -19,7 +21,7 @@ class Country
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $name;
+    protected $name;
     
     /**
      * @ORM\Column(type="string", nullable=false)
@@ -55,7 +57,24 @@ class Country
      * @ORM\Column(type="string", nullable=true)
      */
     protected $region;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Main\People", mappedBy="country")
+     */
+    protected $people;
+    
+    public function __construct()
+    {
+        $this->people = new ArrayCollection();
+    }
+    
+    /**
+     * @return Collection|Product[]
+     */
+    public function getPeople(): Collection
+    {
+        return $this->getPeople;
+    }
 
     public function getId(): ?int
     {
@@ -159,6 +178,6 @@ class Country
     }
     
     public function __toString() {
-        return $this->name;
+        return (string) $this->name;
     }
 }
