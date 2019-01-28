@@ -7,15 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Main\PeopleRepository")
  */
-class People
+class People extends BaseEntity
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-    
      /**
      * @ORM\OneToOne(targetEntity="App\Application\Sonata\UserBundle\Entity\User", fetch="EXTRA_LAZY", inversedBy="people")
      */
@@ -41,11 +34,6 @@ class People
      */
     protected $dateOfBirth;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -68,12 +56,5 @@ class People
         $this->surname = $surname;
 
         return $this;
-    }
-    
-    
-    
-    
-    
-    
-    
+    } 
 }

@@ -9,15 +9,8 @@ use Doctrine\Common\Collections\Collection;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Main\CountryRepository")
  */
-class Country
+class Country extends BaseEntity
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -74,11 +67,6 @@ class Country
     public function getPeople(): Collection
     {
         return $this->getPeople;
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getName(): ?string
