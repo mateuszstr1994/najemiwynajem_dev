@@ -98,8 +98,10 @@ class UserAdmin extends AbstractAdmin
             ->addIdentifier('username')
             ->add('email')
             ->add('groups')
+            ->add('people', null, ["label" => "Person"])    
             ->add('enabled', null, ['editable' => true])
             ->add('createdAt')
+
         ;
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
@@ -130,29 +132,10 @@ class UserAdmin extends AbstractAdmin
         $showMapper
             ->with('General')
                 ->add('username')
-                ->add('email')
+                ->add('email')  
             ->end()
             ->with('Groups')
                 ->add('groups')
-            ->end()
-            ->with('Profile')
-                ->add('dateOfBirth')
-                ->add('firstname')
-                ->add('lastname')
-                ->add('website')
-                ->add('biography')
-                ->add('gender')
-                ->add('locale')
-                ->add('timezone')
-                ->add('phone')
-            ->end()
-            ->with('Social')
-                ->add('facebookUid')
-                ->add('facebookName')
-                ->add('twitterUid')
-                ->add('twitterName')
-                ->add('gplusUid')
-                ->add('gplusName')
             ->end()
             ->with('Security')
                 ->add('token')
@@ -168,10 +151,8 @@ class UserAdmin extends AbstractAdmin
     {
         // define group zoning
         $formMapper
-            ->tab('User')
-                ->with('Profile', ['class' => 'col-md-6'])->end()
-                ->with('General', ['class' => 'col-md-6'])->end()
-                ->with('Social', ['class' => 'col-md-6'])->end()
+            ->tab('User')    
+                ->with('General', ['class' => 'col-md-12'])->end()
             ->end()
             ->tab('Security')
                 ->with('Status', ['class' => 'col-md-4'])->end()
@@ -202,30 +183,6 @@ class UserAdmin extends AbstractAdmin
                     ->add('plainPassword', TextType::class, [
                         'required' => (!$this->getSubject() || null === $this->getSubject()->getId()),
                     ])
-                ->end()
-                ->with('Profile')
-                    ->add('dateOfBirth', DatePickerType::class, [
-                        'years' => range(1900, $now->format('Y')),
-                        'dp_min_date' => '1-1-1900',
-                        'dp_max_date' => $now->format('c'),
-                        'required' => false,
-                    ])
-                    ->add('firstname', null, ['required' => false])
-                    ->add('lastname', null, ['required' => false])
-                    ->add('website', UrlType::class, ['required' => false])
-                    ->add('biography', TextType::class, ['required' => false])
-                    ->add('gender', ChoiceType::class, $genderOptions)
-                    ->add('locale', LocaleType::class, ['required' => false])
-                    ->add('timezone', TimezoneType::class, ['required' => false])
-                    ->add('phone', null, ['required' => false])
-                ->end()
-                ->with('Social')
-                    ->add('facebookUid', null, ['required' => false])
-                    ->add('facebookName', null, ['required' => false])
-                    ->add('twitterUid', null, ['required' => false])
-                    ->add('twitterName', null, ['required' => false])
-                    ->add('gplusUid', null, ['required' => false])
-                    ->add('gplusName', null, ['required' => false])
                 ->end()
             ->end()
             ->tab('Security')

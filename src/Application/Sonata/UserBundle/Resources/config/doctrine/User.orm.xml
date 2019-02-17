@@ -11,6 +11,9 @@
         </id>
         
         <one-to-one field="people" target-entity="\App\Entity\Main\People" mapped-by="user">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
         </one-to-one>
         
     </entity>

@@ -14,10 +14,10 @@
                 Wyszukiwarka        
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4 align-self-center">
-                {% if app.user %}
-                    
+                {% if app.user %}     
+                    {% include 'Parts/Menu/MenuHeaderLoggedIn.html.twig' %}
                 {% else %}
-                    {% include 'Parts/Menu/MenuHeaderLoogedPerson.html.twig' %}
+                    {% include 'Parts/Menu/MenuHeaderNotLooged.html.twig' %}
                 {% endif %}
             </div>
             
