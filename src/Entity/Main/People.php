@@ -5,7 +5,7 @@ namespace App\Entity\Main;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Application\Sonata\UserBundle\Entity\User;
-use App\Entity\Main\Companies;
+use App\Entity\Main\MembersOfCompany;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Main\PeopleRepository")
  */
@@ -17,10 +17,11 @@ class People extends BaseEntity
      */
     private $user;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="Companies", inversedBy="people",  cascade={"persist"})
+     /**
+     * One Product has One Shipment.
+     * OneToOne(targetEntity="MembersOfCompany", mappedBy="person")
      */
-    private $company;
+    protected $memberOfCompany;
     
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -94,5 +95,15 @@ class People extends BaseEntity
     {
         return $this->getName()." ".$this->getSurname();
     }
+    
+    /**
+     * @return mixed
+     */
+    public function getMemberOfCompany()
+    {
+        return $this->memberOfCompany;
+    }
+    
+    
     
 }

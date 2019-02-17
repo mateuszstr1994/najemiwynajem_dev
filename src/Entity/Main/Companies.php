@@ -4,6 +4,7 @@ namespace App\Entity\Main;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Main\People;
+use App\Entity\Main\MembersOfCompany;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Main\CompaniesRepository")
@@ -16,9 +17,9 @@ class Companies extends BaseEntity
     private $name;
     
     /**
-     * @ORM\OneToMany(targetEntity="People", fetch="EXTRA_LAZY", mappedBy="company",  cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="MembersOfCompany", fetch="EXTRA_LAZY", mappedBy="company",  cascade={"persist"})
      */
-    private $people = [];
+    private $membersOfCompany = [];
     
     public function getName(): ?string
     {
