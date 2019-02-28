@@ -59,7 +59,8 @@ class RegistrationController extends Base
      * @return Response
      */
     public function registerAction(Request $request)
-    {   echo 'sdasdadsa';
+    {   
+        
         $user = $this->userManager->createUser();
         $user->setEnabled(false); 
 

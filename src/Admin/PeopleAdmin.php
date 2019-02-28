@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
+
 final class PeopleAdmin extends AbstractAdmin
 {
 
@@ -44,6 +45,7 @@ final class PeopleAdmin extends AbstractAdmin
 			->add('name')
 			->add('surname')
 			->add('dateOfBirth')
+                        ->add('user')
 			;
     }
 
