@@ -78,3 +78,74 @@ and open the template in the editor.
 }
 
 
+.btn-primary{
+	background-color: $second-color !important;
+	border:1px solid $second-color !important;
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-white;
+	font-size:$font-size-small !important;
+}
+
+.btn-black{
+	background-color: $color-white !important;
+	border:1px solid $color-white !important;
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-black;
+	border-radius:0px !important;
+	font-size:$font-size-small-5 !important;
+	&:focus{
+		box-shadow:none;
+	}
+}
+
+.btn-login-menu{
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-black;
+	padding:0.25rem;
+	border-radius:0px !important;
+	font-size:$font-size-small-5 !important;
+}
+
+.btn-blue{
+    background-color: #025EC3 !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.6px !important;
+    border: 2px solid #0054b1 !important;
+    border-radius:5px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 0.95rem !important;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    
+    
+    &:before {
+        content: "";
+        background-color: rgba(255,255,255,0.5);
+        height: 100%;
+        width: 2em;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -4.5em;
+        transform: skewX(-45deg) translateX(0);
+        transition: none;
+    }
+    &:hover {
+        background-color: $color-primary;
+        color: #fff;
+        border-bottom: 4px solid darken($color-primary, 10%);
+        &:before {
+            transform: skewX(-45deg) translateX(22.5em);
+            transition: all 0.5s ease-in-out;
+        }
+    }
+    
+}
+
+

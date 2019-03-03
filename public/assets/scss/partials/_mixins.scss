@@ -50,7 +50,7 @@
 
 }
 
-@mixin set_grid($count_column:$count_column, $grid:grid,  $align-items: center, $justify-content:stretch,  $justify-items:center){
+@mixin set_grid($count_column:1, $grid:grid,  $align-items: center, $justify-content:stretch,  $justify-items:center){
 	    display: $grid;
 	    grid-template-columns: repeat($count_column, 1fr);
 	    justify-content: $justify-content;
@@ -68,5 +68,34 @@
 	color: $color-black;
 	letter-spacing: $letter-spacing-big;
 
+}
+
+@mixin default-border($size: $form-default-size, $style: $form-default-type, $color: $form-default-color, $director: '', $radius: 0 ){
+        @if($director == ''){
+            border-width: $size;
+            border-color: $color;
+            border-style: $style;
+            border-radius: $radius;
+        }@else{
+            border-#{$director}-width: $size;
+            border-#{$director}-color: $color;
+            border-#{$director}-style: $style;
+            border-#{$director}-radios: $radius;
+        }
+}
+
+
+@mixin padding($padding-top: 0px, $padding-right:0px, $padding-bottom: 0px, $padding-left: 0px ){
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+    padding-right: $padding-right;
+    padding-left: $padding-left;
+}
+
+@mixin default-input-text(){
+       @include padding (7px, 20px, 7px, 20px);
+       width: $w-90;
+       @include default-border(1px, solid, $color-gray-dark, '', 6px);
+       
 }
 

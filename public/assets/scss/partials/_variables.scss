@@ -13,16 +13,18 @@ $color-primary:$color-red;
 
 $default-padding-bottom: 0.5em;
 $color-gray-primary: #eceff1;
+$color-gray-dark: #d0d0d0;
 $color-gray: #ced4da;
 $font-weight: 600;
 
 $font-weight-form-bold:600;
+$bold: 600;
 
 $color-dark-gray: #d0d0d0;
 
 $letter-spacing-big:0.75px;
 
-
+$s-0: 0rem;
 $s-1: 0.25rem;
 $s-2: 0.5rem;
 $s-3: 0.75rem;
@@ -33,6 +35,8 @@ $s-7: 1.75rem;
 $s-8: 2rem;
 $s-9: 2.25rem;
 $default-radius: 5px;
+
+$s-90: 0.9rem;
 
 $first-color:$color-blue; // kolor główny
 $second-color:$color-red; // kolor drugi
@@ -55,3 +59,15 @@ $tablet: 768px;
 $desktop-m: 992px;
 $desktop-lg: 1200px;
 
+$form-default-size: 1px;
+$form-default-type: solid;
+$form-default-color: $color-dark-gray;
+
+$w-80: 80%;
+$w-85: 85%;
+$w-90: 90%;
+
+$input-def-padding-top: 0px;
+$input-def-padding-bottom: 0px;
+$input-def-padding-left: 20px;
+$input-def-padding-right: 0px;

@@ -113,48 +113,113 @@ body.body-primary  {
 	border: 1px solid $border-color-primary !important; 
 }
 
-
-.btn-primary{
-	background-color: $second-color !important;
-	border:1px solid $second-color !important;
-	font-weight: 500!important;
-	letter-spacing:0.6px!important;
-	color: $color-white;
-	font-size:$font-size-small !important;
-}
-
-.btn-black{
-	background-color: $color-white !important;
-	border:1px solid $color-white !important;
-	font-weight: 500!important;
-	letter-spacing:0.6px!important;
-	color: $color-black;
-	border-radius:0px !important;
-	font-size:$font-size-small-5 !important;
-	&:focus{
-		box-shadow:none;
-	}
-}
-
-.btn-login-menu{
-	font-weight: 500!important;
-	letter-spacing:0.6px!important;
-	color: $color-black;
-	padding:0.25rem;
-	border-radius:0px !important;
-	font-size:$font-size-small-5 !important;
-
-}
-
-.h1-form{
+.form-heading{
 	font-size:$font-size-huge;
-	padding-top:$s-4;
-	padding-bottom:$s-4;
 	display: inline-block;
-	background-color: $color-red;
-	color:$color-white
+        
+        >h1{
+            padding:$s-4;
+            margin: $s-0;
+        }
+        
+        > h1.primary{
+            background-color: $color-red;
+            color:$color-white
+        }
+        
+        > h1.secondary{
+            background-color: $color-blue;
+            color:$color-white
+        }
+}
 
-	
+form.default-form {
+    padding: $s-5;
+    background-color: $color-white;
+    @include default-border(1px, solid, $color-gray-dark);
+    legend{
+        @include default-border(2px, solid, $color-dark-blue, bottom);
+        font-weight: $bold; 
+    }
+    
+    input {
+        @include default-input-text();  
+    }
+    
+    .box-input{
+        
+        @include set_grid(1,inline-grid );
+      
+        @include breakpoint($mobile){
+            width: calc(100% - 2px);
+        }
+       
+        @include breakpoint($tablet){
+            width: calc(50% - 2px);
+        }
+        
+        label{
+            font-size: $s-90;
+            display: block;
+            width: $w-90;
+        }
+    }
+    
+   
+    
+    
+}
+
+form{
+    fieldset{
+        
+    width: $w-85;
+    margin: auto;
+    margin-top: $s-3;
+    
+        legend{
+            padding-bottom: $s-2;
+            font-size: $font-size-big2;
+            margin-bottom: $s-2;
+        }
+ 
+        .box-input{
+            margin-top:$s-2;
+            margin-bottom: $s-2;
+        }
+    }
+    
+    .submit-contanier{
+        
+        width: $w-85;
+        margin: 0 auto;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        
+        .submit-block{
+            
+            display:block;
+            margin-left: auto;
+            
+            @include breakpoint($mobile){
+                width: calc(100% - 2px);
+            }
+       
+            @include breakpoint($tablet){
+                width: calc(50% - 2px);
+            }
+            
+            padding-left: 2.5%;
+            padding-right:  2.5%;
+        }
+        
+        button{    
+            display:block;
+            margin: 0 auto;
+        }
+        
+    }
+    
 }
 
 .div-fiszka-large{
