@@ -61,7 +61,10 @@ class RegistrationController extends Base
     public function registerAction(Request $request)
     {   
         
+        $validatorService = $this->get("app.validation.service");
+        
         if($request->isMethod('POST')) {
+            
             
         }
         

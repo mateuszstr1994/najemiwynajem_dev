@@ -70,3 +70,8 @@ services:
     App\Controller\RegistrationController:
         arguments:
             $formFactory: '@fos_user.registration.form.factory'
+            
+    app.validation.service:
+        class: App\Service\ValidationService
+        arguments: [ "@doctrine.orm.entity_manager",  '@service_container' ]
+        public: true

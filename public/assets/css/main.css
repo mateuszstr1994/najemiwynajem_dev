@@ -809,6 +809,79 @@ body.body-primary {
 .border-primary {
   border: 1px solid #d0d0d0 !important; }
 
+form.default-form {
+  padding: 1.25rem;
+  background-color: #ffffff;
+  transition-duration: 2s;
+  border-width: 1px;
+  border-color: #d0d0d0;
+  border-style: solid;
+  border-radius: 0; }
+  form.default-form fieldset {
+    width: 85%;
+    margin: auto;
+    margin-top: 0.75rem; }
+  form.default-form legend {
+    border-bottom-width: 2px;
+    border-bottom-color: #0754A9;
+    border-bottom-style: solid;
+    border-bottom-radios: 0;
+    font-weight: 600;
+    font-size: 1.2rem; }
+  form.default-form .box-input {
+    width: 90%;
+    display: block;
+    transition: transform 150ms ease-out, font-size 150ms ease-out;
+    margin-top: 0.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative; }
+    form.default-form .box-input input {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 20px;
+      padding-left: 20px;
+      width: 100%;
+      border: none;
+      border-bottom-width: 1px;
+      border-bottom-color: #d0d0d0;
+      border-bottom-style: solid;
+      border-bottom-radios: 6px;
+      outline-style: none;
+      box-shadow: none; }
+    form.default-form .box-input label {
+      font-size: 0.9rem;
+      display: block;
+      width: 90%;
+      margin-bottom: 0px;
+      margin-top: 0.75rem;
+      opacity: 0;
+      transition: 0.25s; }
+  form.default-form div.focused label {
+    display: block;
+    opacity: 1;
+    position: relative;
+    transform: translateY(-25%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1.25rem; }
+  form.default-form div.focused input {
+    border-bottom: 2px solid #F6200F; }
+  form.default-form div.focused input::-webkit-input-placeholder {
+    color: transparent; }
+  form.default-form .submit-contanier {
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem; }
+    form.default-form .submit-contanier .submit-block {
+      display: block;
+      margin: 0 auto;
+      width: calc(90% - 2px); }
+    form.default-form .submit-contanier button {
+      display: block;
+      margin: 0 auto; }
+
 .form-heading {
   font-size: 1.5rem;
   display: inline-block; }
@@ -821,188 +894,6 @@ body.body-primary {
   .form-heading > h1.secondary {
     background-color: #025EC3;
     color: #ffffff; }
-
-form.default-form {
-  padding: 1.25rem;
-  background-color: #ffffff;
-  border-width: 1px;
-  border-color: #d0d0d0;
-  border-style: solid;
-  border-radius: 0; }
-  form.default-form legend {
-    border-bottom-width: 2px;
-    border-bottom-color: #0754A9;
-    border-bottom-style: solid;
-    border-bottom-radios: 0;
-    font-weight: 600; }
-  form.default-form input {
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-right: 20px;
-    padding-left: 20px;
-    width: 90%;
-    border-width: 1px;
-    border-color: #d0d0d0;
-    border-style: solid;
-    border-radius: 6px; }
-  form.default-form .box-input {
-    display: inline-grid;
-    grid-template-columns: repeat(1, 1fr);
-    justify-content: stretch;
-    align-items: center;
-    justify-items: center; }
-    @media (min-width: 20em) {
-      form.default-form .box-input {
-        width: calc(100% - 2px); } }
-    @media (min-width: 48em) {
-      form.default-form .box-input {
-        width: calc(50% - 2px); } }
-    form.default-form .box-input label {
-      font-size: 0.9rem;
-      display: block;
-      width: 90%; }
-
-form fieldset {
-  width: 85%;
-  margin: auto;
-  margin-top: 0.75rem; }
-  form fieldset legend {
-    padding-bottom: 0.5rem;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem; }
-  form fieldset .box-input {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem; }
-form .submit-contanier {
-  width: 85%;
-  margin: 0 auto;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem; }
-  form .submit-contanier .submit-block {
-    display: block;
-    margin-left: auto;
-    padding-left: 2.5%;
-    padding-right: 2.5%; }
-    @media (min-width: 20em) {
-      form .submit-contanier .submit-block {
-        width: calc(100% - 2px); } }
-    @media (min-width: 48em) {
-      form .submit-contanier .submit-block {
-        width: calc(50% - 2px); } }
-  form .submit-contanier button {
-    display: block;
-    margin: 0 auto; }
-
-.div-fiszka-large {
-  overflow: hidden;
-  position: relative; }
-  @media (min-width: 20em) {
-    .div-fiszka-large {
-      width: 100%; } }
-  @media (min-width: 48em) {
-    .div-fiszka-large {
-      width: 50%; } }
-  .div-fiszka-large:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 0;
-    border-bottom: 60px solid #f6200f;
-    border-right: 60px solid transparent; }
-
-form.form-two-column {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 2rem; }
-  form.form-two-column > fieldset {
-    display: block;
-    width: 100%;
-    margin-top: 2rem; }
-    form.form-two-column > fieldset > div {
-      margin-top: 0.5em;
-      margin-bottom: 0.5em; }
-      @media (min-width: 20em) {
-        form.form-two-column > fieldset > div {
-          width: calc(100% - 2px);
-          display: inline-grid;
-          grid-template-columns: repeat(1, 1fr);
-          justify-content: stretch;
-          align-items: center;
-          justify-items: center; } }
-      @media (min-width: 48em) {
-        form.form-two-column > fieldset > div {
-          width: calc(50% - 2px);
-          display: inline-grid;
-          grid-template-columns: repeat(1, 1fr);
-          justify-content: stretch;
-          align-items: center;
-          justify-items: center; } }
-      form.form-two-column > fieldset > div label {
-        font-size: 0.95rem;
-        display: block;
-        width: 90%; }
-      form.form-two-column > fieldset > div input {
-        padding-left: 20px;
-        border-radius: 6px;
-        height: 34px;
-        border: 1px solid #d0d0d0;
-        display: block;
-        width: 90%; }
-      form.form-two-column > fieldset > div > div.number-phone-input {
-        display: grid;
-        grid-template-columns: 1fr 5fr;
-        align-items: center;
-        justify-items: center;
-        width: 90%; }
-        form.form-two-column > fieldset > div > div.number-phone-input input {
-          display: inline-block;
-          width: 100%;
-          border-left: 0px;
-          border-top-left-radius: 0px;
-          border-bottom-left-radius: 0px; }
-        form.form-two-column > fieldset > div > div.number-phone-input span {
-          margin: auto;
-          display: inline-grid;
-          grid-template-columns: repeat(1, 1fr);
-          justify-content: stretch;
-          align-items: center;
-          justify-items: center;
-          font-weight: 600;
-          border: 1px solid #d0d0d0;
-          border-radius: 6px;
-          border-right: 0px;
-          border-top-right-radius: 0px;
-          border-bottom-right-radius: 0px;
-          border-right: 1px solid #d0d0d0;
-          width: 100%;
-          height: 100%; }
-    form.form-two-column > fieldset > legend {
-      width: 100%;
-      display: block;
-      padding-bottom: 0.5em;
-      border-bottom: solid 2px #F6200F;
-      padding-left: 0.5em;
-      margin-bottom: 0.75em;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #000000;
-      letter-spacing: 0.75px; }
-  form.form-two-column .submit-container {
-    width: 95%;
-    margin: 0 auto;
-    margin-top: 2rem; }
-    form.form-two-column .submit-container input[type="submit"] {
-      display: block; }
-      @media (min-width: 20em) {
-        form.form-two-column .submit-container input[type="submit"] {
-          width: 95%;
-          margin: auto; } }
-      @media (min-width: 48em) {
-        form.form-two-column .submit-container input[type="submit"] {
-          width: 47.5%;
-          margin-left: auto;
-          margin-right: 0px; } }
 
 /*
 To change this license header, choose License Headers in Project Properties.

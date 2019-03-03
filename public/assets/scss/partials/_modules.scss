@@ -1,112 +1,112 @@
-//style komponentów strony
-
-
 // Formularze
 
+form.default-form {
 
-form.form-two-column{
-	display:block;
-	width:100%;
-	margin: 0 auto;
-	margin-bottom:$s-8;
+    padding: $s-5;
+    background-color: $color-white;
+    transition-duration:2s;
+    
+    @include default-border(1px, solid, $color-gray-dark);
+    
+    fieldset{    
+        width: $w-85;
+        margin: auto;
+        margin-top: $s-3;
+    }
+    
+    legend{
+        @include default-border(2px, solid, $color-dark-blue, bottom);
+        font-weight: $bold; 
+        font-size: $font-size-big2;
+    }
+    
+    .box-input{
+        
+        width:90%;
+        display:block;
+        transition: transform 150ms ease-out, font-size 150ms ease-out;
+        margin-top:$s-2;
+        margin-right:auto;
+        margin-left:auto;
+        position:relative;
+        
+        input {
+            @include default-input-text();
+            outline-style:none;
+            box-shadow:none; 
+        }
+        
+        label{
+            font-size: $s-90;
+            display: block;
+            width: $w-90;
+            margin-bottom:0px;
+            margin-top:$s-3;
+            opacity:0;
+            transition: 0.25s;
+        }
+   
+    }
+    
+    div.focused{
+        
+        label{
+            display:block;
+            opacity:1;
+            position:relative;
+            transform: translateY(-25%);
+            font-size: $s-90;
+            font-weight: $font-weight;
+            margin-top:$s-5;
+        }
+            
+        input {
+            border-bottom:2px solid $color-red;  
+        }
+            
+        input::-webkit-input-placeholder{
+            color:transparent;
+        }
+    }
+    
+    .submit-contanier{
+        
+        width: $w-85;
+        margin: 0 auto;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        
+        .submit-block{ 
+            display:block;
+            margin:0 auto;
+            width: calc(90% - 2px);
+        }
+        
+        button{    
+            display:block;
+            margin: 0 auto;
+        }
+        
+    }
+}
 
-	>fieldset{
-		display:block;
-		width:100%;
-		margin-top: $s-8;
-		
-
-		> div{
-			//display:inline-block;
-			margin-top:0.5em;
-			margin-bottom:0.5em;
-			@include breakpoint($mobile){
-				width:calc(100% - 2px);
-				@include set_grid(1, inline-grid, center);
-			}
-
-			@include breakpoint($tablet){
-				width:calc(50% - 2px);
-				@include set_grid(1, inline-grid, center);
-			}
-
-			label{
-				font-size:$font-size-small-5;
-				display:block;
-				width:90%;
-			}
-
-			input{
-					padding-left:20px;		
-					border-radius:6px;
-					height:34px;
-					border:1px solid $color-dark-gray;
-					display:block;
-					width:90%;
-				}
-
-			>div.number-phone-input{
-				@include set_grid_typical;
-				width:90%;
-				input{
-					display: inline-block;
-					width: 100%;
-					border-left:0px;
-					border-top-left-radius: 0px;
-					border-bottom-left-radius: 0px;
-
-
-				}
-
-				span{
-					margin:auto;
-					@include set_grid(1, inline-grid);
-					font-weight: $font-weight-form-bold;
-					border:1px solid $color-dark-gray;
-					border-radius:6px;
-					border-right:0px;
-					border-top-right-radius: 0px;
-					border-bottom-right-radius: 0px;
-					border-right:1px solid $color-dark-gray;
-					width:100%;
-					height: 100%;
-				}
-
-			}	
-
-			// do numeru telefonu
-			
-		}
-
-		>legend{
-			width:100%;
-			display:block;
-			@include default-legend-form();
-		}
-
-	}
-
-	.submit-container{
-		width: 95%;
-    	margin: 0 auto;
-    	margin-top: $s-8;
-    	
-		input[type="submit"]{
-			display: block;
-
-			@include breakpoint($mobile){
-				width: 95%;
-				margin: auto;
-			}
-
-			@include breakpoint($tablet){
-				    width: 47.5%;
-    				margin-left: auto;
-    				margin-right: 0px;
-			}
-		}
-	}
-
-
-
+.form-heading{
+    
+    font-size:$font-size-huge;
+    display: inline-block;
+        
+    >h1{
+        padding:$s-4;
+        margin: $s-0;
+    }
+        
+    > h1.primary{
+        background-color: $color-red;
+        color:$color-white
+    }
+        
+    > h1.secondary{
+        background-color: $color-blue;
+        color:$color-white
+    }
 }

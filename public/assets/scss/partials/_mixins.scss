@@ -93,9 +93,10 @@
 }
 
 @mixin default-input-text(){
-       @include padding (7px, 20px, 7px, 20px);
-       width: $w-90;
-       @include default-border(1px, solid, $color-gray-dark, '', 6px);
+       @include padding (5px, 20px, 5px, 20px);
+       width: 100%;
+       border:none;
+       @include default-border(1px, solid, $color-gray-dark, bottom, 6px);
        
 }
 
