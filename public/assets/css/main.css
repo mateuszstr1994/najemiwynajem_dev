@@ -836,6 +836,8 @@ form.default-form {
     margin-right: auto;
     margin-left: auto;
     position: relative; }
+    form.default-form .box-input input#fos_user_registration_form_username {
+      background-color: white; }
     form.default-form .box-input input {
       padding-top: 5px;
       padding-bottom: 5px;
@@ -848,7 +850,8 @@ form.default-form {
       border-bottom-style: solid;
       border-bottom-radios: 6px;
       outline-style: none;
-      box-shadow: none; }
+      box-shadow: none;
+      background-color: white; }
     form.default-form .box-input label {
       font-size: 0.9rem;
       display: block;
@@ -857,6 +860,19 @@ form.default-form {
       margin-top: 0.75rem;
       opacity: 0;
       transition: 0.25s; }
+    form.default-form .box-input .form-error ul {
+      margin-top: 0.75rem;
+      margin-left: 0;
+      padding-left: 0px;
+      padding: 0.5rem; }
+      form.default-form .box-input .form-error ul li {
+        list-style: none;
+        font-weight: bold;
+        color: #F6200F; }
+      form.default-form .box-input .form-error ul li:before {
+        content: "*";
+        margin-right: 0.5rem;
+        color: #F6200F; }
   form.default-form div.focused label {
     display: block;
     opacity: 1;
@@ -868,6 +884,18 @@ form.default-form {
   form.default-form div.focused input {
     border-bottom: 2px solid #F6200F; }
   form.default-form div.focused input::-webkit-input-placeholder {
+    color: transparent; }
+  form.default-form div.focused-error label {
+    display: block;
+    opacity: 1;
+    position: relative;
+    transform: translateY(-25%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1.25rem; }
+  form.default-form div.focused-error input {
+    border-bottom: 2px solid #F6200F; }
+  form.default-form div.focused-error input::-webkit-input-placeholder {
     color: transparent; }
   form.default-form .submit-contanier {
     width: 85%;

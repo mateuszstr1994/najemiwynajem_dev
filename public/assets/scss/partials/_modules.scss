@@ -7,6 +7,7 @@ form.default-form {
     transition-duration:2s;
     
     @include default-border(1px, solid, $color-gray-dark);
+   
     
     fieldset{    
         width: $w-85;
@@ -29,11 +30,15 @@ form.default-form {
         margin-right:auto;
         margin-left:auto;
         position:relative;
-        
+      
+        input#fos_user_registration_form_username{
+             background-color:white;
+        }
         input {
             @include default-input-text();
             outline-style:none;
             box-shadow:none; 
+            background-color:white;
         }
         
         label{
@@ -45,10 +50,53 @@ form.default-form {
             opacity:0;
             transition: 0.25s;
         }
+        
+        .form-error {
+            ul {
+                margin-top:$s-3;
+                margin-left:0;
+                padding-left:0px;
+                padding:$s-2;
+                
+                li{
+                    list-style: none;
+                    font-weight:bold;
+                    color:$color-red;
+                }
+                
+                li:before
+                {
+                    content: "*";
+                    margin-right:$s-2;
+                    color:$color-red;
+                }
+            }
+        }
    
     }
     
     div.focused{
+        
+        label{
+            display:block;
+            opacity:1;
+            position:relative;
+            transform: translateY(-25%);
+            font-size: $s-90;
+            font-weight: $font-weight;
+            margin-top:$s-5;
+        }
+            
+        input {
+            border-bottom:2px solid $color-red;  
+        }
+            
+        input::-webkit-input-placeholder{
+            color:transparent;
+        }
+    }
+    
+    div.focused-error{
         
         label{
             display:block;

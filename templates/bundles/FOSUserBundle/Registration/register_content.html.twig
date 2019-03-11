@@ -12,32 +12,44 @@
         <div class="row">
             <div class="col-sm-12">
                 
-                <form class="default-form">
+                <form name="fos_user_registration_form" class="default-form fos_user_registration_register" method="POST" >
                     <fieldset>
                         <legend>Dane logowania:</legend>
-
-                        <div class="box-input">
-                            <label for="username" class="">Nazwa użytkownika:</label>
-                            <input autocomplete="off" required="" placeholder="Nazwa użytkownika" name="username" type="text" id="username">
+                        
+                        <div class="box-input {%if form.username.vars.errors|length %} focused-error {% endif%}">
+                            <label for="fos_user_registration_form[username]" class="">Nazwa użytkownika:</label>
+                            <input  placeholder="Nazwa użytkownika" type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="180" pattern=".{2,}"
+                            {% if form.vars.value.username is defined and form.vars.value.username != null %} value="{{form.vars.value.username}}" {%endif%} >
+                            <div class="form-error">
+                                {{ form_errors(form.username) }}
+                            </div>
                         </div>
                         
-                        <div class="box-input">
-                            <label for="email" class="">Adres e-mail:</label>
-                            <input autocomplete="off" required="" placeholder="Adres e-mail" class="" name="email" type="email" id="email">
+                        <div class="box-input {%if form.email.vars.errors|length %} focused-error {% endif%}">
+                            <label for="fos_user_registration_form_email" class="">Adres e-mail:</label>
+                            <input type="email" id="fos_user_registration_form_email" placeholder="Adres e-mail" name="fos_user_registration_form[email]" required="required"
+                                    {% if form.vars.value.email is defined and form.vars.value.email != null %} value="{{form.vars.value.email}}" {% endif %}>
+                            <div class="form-error">
+                                {{ form_errors(form.email) }}
+                            </div>
                         </div>
-                        <div class="box-input">
-                            <label for="password" class="">Hasło:</label>
-                            <input autocomplete="off" required="" placeholder="Hasło" class="" name="password" type="password" id="login">
+                        <div class="box-input {%if form.plainPassword.first.vars.errors|length %} focused-error {% endif%}">
+                            <label for="fos_user_registration_form_plainPassword_first" class="">Hasło:</label>
+                            <input type="password" placeholder="Hasło" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" autocomplete="new-password">
+                            <div class="form-error">
+                                {{ form_errors(form.plainPassword.first) }}
+                            </div>
                         </div>
-                        <div class="box-input">
-                            <label for="confirm_password" class="">Powtórz hasło:</label>
-                            <input autocomplete="off" required="" placeholder="Powtórz hasło" class="" name="confirm_password" type="password" id="confirm_password">
+                        <div class="box-input {%if form.plainPassword.first.vars.errors|length %} focused-error {% endif%}">
+                            <label for="fos_user_registration_form[plainPassword][second]" class="">Powtórz hasło:</label>
+                            <input type="password" placeholder="Powtórz hasło" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" autocomplete="new-password">
                         </div>
+                        {{ form_row(form._token) }}
                     </fieldset>
                     
                     <div class="submit-contanier">
                         <div class="submit-block">
-                            <button type="submit" class="btn-blue">
+                            <button type="submit" class="btn-blue" value="{{ 'registration.submit'|trans }}">
                                 <i class="fas fa-user-plus"></i>
                                     Zarejestruj się
                             </button>
@@ -48,4 +60,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>                                              
