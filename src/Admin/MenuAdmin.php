@@ -20,8 +20,8 @@ final class MenuAdmin extends AbstractAdmin
     {   // ustawia mi wartosci
         // Uruchamia się tylko kiedy jest tworony nowy obiekt, nie edycja
         $instance = parent::getNewInstance();
-        $instance->setCreateDate(new \DateTime());
-        $instance->setUpdateDate(new \DateTime());
+        $instance->setCreatedAt(new \DateTime());
+        $instance->setUpdateAt(new \DateTime());
        
         return $instance;
     }
@@ -42,8 +42,8 @@ final class MenuAdmin extends AbstractAdmin
     {
         $datagridMapper
 			->add('name')
-			->add('createDate')
-			->add('updateDate')
+			->add('createdAt')
+			->add('updateAt')
 			->add('status')
 			;
     }
@@ -54,12 +54,11 @@ final class MenuAdmin extends AbstractAdmin
 			->add('id')
 			->add('name')
 			->add('alias')
-                        ->add('country')
 			->add('class')
 			->add('position')
-			->add('createDate')
-			->add('updateDate')
-			->add('status')
+                        ->add('status')
+			->add('updateAt')
+                        ->add('createdAt')
 			->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -75,7 +74,6 @@ final class MenuAdmin extends AbstractAdmin
                
             ->add('name')
             ->add('alias')
-            ->add('country',ModelAutocompleteType::class, array( 'property' => 'name'))
             ->add('position')
             ->add('status', null, array('label' => 'active'))
             ->add('class')
@@ -88,12 +86,12 @@ final class MenuAdmin extends AbstractAdmin
                     'inline' => 'table',
                     'sortable' => 'position',
                 )
-            )
-            ->add('createDate',DateTimePickerType::class, array(
-              'format' => 'dd/MM/yyyy HH:mm',
-              'widget' => 'single_text',
-              'label' => 'Created date',
-                ));
+            );
+            //->add('createdAt',DateTimePickerType::class, array(
+            //  'format' => 'dd/MM/yyyy HH:mm',
+            //  'widget' => 'single_text',
+            //  'label' => 'Created date',
+            //    ));
     }
 
     protected function configureShowFields(ShowMapper $showMapper)
@@ -104,8 +102,8 @@ final class MenuAdmin extends AbstractAdmin
 			->add('alias')
 			->add('class')
 			->add('position')
-			->add('createDate')
-			->add('updateDate')
+			->add('createdAt')
+			->add('updateAt')
 			->add('status')
 			;
     }

@@ -12,7 +12,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService;
 
-class HeaderDefaultService extends BaseBlockService
+class HeaderDefaulBlockService extends BaseBlockService
 {
     public function getName()
     {
@@ -24,7 +24,7 @@ class HeaderDefaultService extends BaseBlockService
         $resolver->setDefaults(array(
             'url'      => false,
             'title'    => 'Menu główne Header',
-            'template' => 'Block/HeaderDefault.html.twig',
+            'template' => 'Block/headerDefault.html.twig',
         ));
     }
     

@@ -13,10 +13,30 @@ services:
             - { name: sonata.block }
             
     header.default.block:
-        class: App\Block\HeaderDefaultService
+        class: App\Block\HeaderDefaulBlockService
         public: true
         arguments:
             - 'header.default.block'
+            - '@templating'
+            - '@service_container'
+        tags:
+            - { name: sonata.block }
+            
+    authentication.menu.block:
+        class: App\Block\AuthenticationMenuBlockService
+        public: true
+        arguments:
+            - 'authentication.menu.block'
+            - '@templating'
+            - '@service_container'
+        tags:
+            - { name: sonata.block }
+    
+    logged.in.menu.block:
+        class: App\Block\LoggedInMenuBlockService
+        public: true
+        arguments:
+            - 'logged.in.menu.block'
             - '@templating'
             - '@service_container'
         tags:

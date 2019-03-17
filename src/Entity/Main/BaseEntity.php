@@ -49,9 +49,8 @@ class BaseEntity
     
     public function __construct(User $user)
     {   
-        $this->setCreatedAt();
-        $this->setUpdateAt();
-      
+        $this->setCreatedAt($user);
+        $this->setUpdateAt($user); 
     }
     
     public function getId() {
