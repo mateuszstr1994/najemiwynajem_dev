@@ -7,10 +7,9 @@ sonata_cache_cache:
     prefix: /
     
 fos_user: 
-     resource: "@FOSUserBundle/Resources/config/routing/all.xml" 
-     
-fos_user_registration_register:
-    path: /register
-    defaults:
-        _controller: App\Controller\RegistrationController::registerAction
-    
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml" 
+
+app_directory:
+    # loads routes from the YAML or XML files found in that directory
+    resource: '../src/Resources/config/routing/'
+    type:     directory 

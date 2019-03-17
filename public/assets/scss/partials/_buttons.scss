@@ -20,6 +20,8 @@ and open the template in the editor.
 .button-primary-outline {
     text-align: center;
     text-decoration: none;
+    background-color:white;
+    width:100%;
     color: $color-primary;
     border: 2px solid #F6200F !important;
     letter-spacing: 0.6px !important;
@@ -148,4 +150,24 @@ and open the template in the editor.
     
 }
 
+.btn-red { 
+    cursor: pointer;
+    background-color: $color-red;
+    font-weight: 500 !important;
+    letter-spacing: 0.6px !important;
+    border: 2px solid $color-dark-red;
+    border-radius:5px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    
+    &:hover {
+        background-color: $color-dark-2-red;
+    }
+    
+}
 

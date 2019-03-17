@@ -1,7 +1,25 @@
-{% extends "@FOSUser/layout.html.twig" %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+
+
 
 {% block fos_user_content %}
-    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+    <div class="container" ng-app="niwApp">
+        <div class="row"  ng-controller="checkEmailController">
+            <div class="col-sm-12 col-md-7 m-auto">
+                <div class="row mt-5 mb-5">
+                    <div class="col-sm-12 heading-block">
+                        <h1 class="heading secondary">Potwierdz rejestracje</h1>
+                    </div>
+                    <div class="col-sm-12 ">
+                        <div id="check-email-block">     
+                            <p class="text-justify">Link aktywacyjny został wysłany na adres e-mail: 
+                                <strong>mateuszstr1994</strong>. 
+                                Sprawdż skrzynkę pocztową i kliknij w link aktywacyjny aby kontynuować.</p>  
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock fos_user_content %}

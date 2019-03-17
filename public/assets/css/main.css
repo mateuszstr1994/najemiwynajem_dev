@@ -792,7 +792,8 @@ body.body-primary {
   padding: 0px;
   font-size: 14px;
   font-family: 'Roboto Condensed', sans-serif;
-  background-color: #eceff1; }
+  background-color: #eceff1;
+  overflow-x: hidden; }
 
 #LogoImg {
   max-width: 200px;
@@ -809,6 +810,9 @@ body.body-primary {
 .border-primary {
   border: 1px solid #d0d0d0 !important; }
 
+.login-box {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2); }
+
 form.default-form {
   padding: 1.25rem;
   background-color: #ffffff;
@@ -816,7 +820,8 @@ form.default-form {
   border-width: 1px;
   border-color: #d0d0d0;
   border-style: solid;
-  border-radius: 0; }
+  border-radius: 0;
+  border-top: 0px; }
   form.default-form fieldset {
     width: 85%;
     margin: auto;
@@ -827,17 +832,55 @@ form.default-form {
     border-bottom-style: solid;
     border-bottom-radios: 0;
     font-weight: 600;
-    font-size: 1.2rem; }
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem; }
+  form.default-form .login-error-block {
+    margin-top: 0.75rem;
+    margin-left: 0;
+    padding-left: 0px;
+    padding: 0.5rem;
+    color: #F6200F;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid #F6200F; }
+  form.default-form .login-error-icon {
+    margin-right: 0.75rem; }
+  form.default-form .box-remeber-me {
+    display: flex;
+    align-items: center; }
+  form.default-form .box-checkbox {
+    width: 90%;
+    margin-top: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative; }
+    form.default-form .box-checkbox label {
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 0px; }
+    form.default-form .box-checkbox input {
+      margin-right: 0.5rem; }
   form.default-form .box-input {
     width: 90%;
     display: block;
     transition: transform 150ms ease-out, font-size 150ms ease-out;
-    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     margin-right: auto;
     margin-left: auto;
     position: relative; }
-    form.default-form .box-input input#fos_user_registration_form_username {
-      background-color: white; }
+    form.default-form .box-input .form-error ul {
+      margin-top: 0.75rem;
+      margin-left: 0;
+      padding-left: 0px;
+      padding: 0.5rem; }
+      form.default-form .box-input .form-error ul li {
+        list-style: none;
+        font-weight: bold;
+        color: #F6200F; }
+      form.default-form .box-input .form-error ul li:before {
+        content: "*";
+        margin-right: 0.5rem;
+        color: #F6200F; }
     form.default-form .box-input input {
       padding-top: 5px;
       padding-bottom: 5px;
@@ -857,22 +900,8 @@ form.default-form {
       display: block;
       width: 90%;
       margin-bottom: 0px;
-      margin-top: 0.75rem;
       opacity: 0;
       transition: 0.25s; }
-    form.default-form .box-input .form-error ul {
-      margin-top: 0.75rem;
-      margin-left: 0;
-      padding-left: 0px;
-      padding: 0.5rem; }
-      form.default-form .box-input .form-error ul li {
-        list-style: none;
-        font-weight: bold;
-        color: #F6200F; }
-      form.default-form .box-input .form-error ul li:before {
-        content: "*";
-        margin-right: 0.5rem;
-        color: #F6200F; }
   form.default-form div.focused label {
     display: block;
     opacity: 1;
@@ -892,7 +921,8 @@ form.default-form {
     transform: translateY(-25%);
     font-size: 0.9rem;
     font-weight: 600;
-    margin-top: 1.25rem; }
+    margin-top: 1.25rem;
+    visibility: initial; }
   form.default-form div.focused-error input {
     border-bottom: 2px solid #F6200F; }
   form.default-form div.focused-error input::-webkit-input-placeholder {
@@ -909,17 +939,67 @@ form.default-form {
     form.default-form .submit-contanier button {
       display: block;
       margin: 0 auto; }
+    form.default-form .submit-contanier .icon {
+      margin-right: 0.5rem; }
 
-.form-heading {
-  font-size: 1.5rem;
+nav.navigation-login {
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-color: #d0d0d0;
+  border-style: solid;
+  border-radius: 0;
+  border-bottom: 0px; }
+  nav.navigation-login .ul-log-reg {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: stretch;
+    align-items: center;
+    justify-items: center;
+    margin: 0px;
+    padding-left: 0px;
+    background-color: white; }
+    nav.navigation-login .ul-log-reg li {
+      width: 100%;
+      list-style: none;
+      padding: 0.75rem;
+      border-bottom: 2px solid #0754A9;
+      font-size: 1rem;
+      text-align: center; }
+      nav.navigation-login .ul-log-reg li .icon {
+        margin-right: 0.5rem; }
+      nav.navigation-login .ul-log-reg li a {
+        color: black;
+        font-weight: bold; }
+      nav.navigation-login .ul-log-reg li a:hover {
+        border-bottom: 0px; }
+    nav.navigation-login .ul-log-reg li.active {
+      border-bottom: 2px solid #F6200F; }
+      nav.navigation-login .ul-log-reg li.active .icon {
+        color: #F6200F; }
+
+#check-email-block {
+  padding: 1.25rem;
+  background-color: #ffffff;
+  transition-duration: 2s;
+  border-width: 1px;
+  border-color: #d0d0d0;
+  border-style: solid;
+  border-radius: 0; }
+  #check-email-block p {
+    font-size: 1rem; }
+
+.heading-block {
   display: inline-block; }
-  .form-heading > h1 {
+  .heading-block > h1 {
     padding: 1rem;
-    margin: 0rem; }
-  .form-heading > h1.primary {
+    margin: 0rem;
+    display: inline-block;
+    font-size: 1.5rem; }
+  .heading-block > h1.primary {
     background-color: #F6200F;
     color: #ffffff; }
-  .form-heading > h1.secondary {
+  .heading-block > h1.secondary {
     background-color: #025EC3;
     color: #ffffff; }
 
@@ -940,6 +1020,8 @@ and open the template in the editor.
 .button-primary-outline {
   text-align: center;
   text-decoration: none;
+  background-color: white;
+  width: 100%;
   color: #F6200F;
   border: 2px solid #F6200F !important;
   letter-spacing: 0.6px !important;
@@ -1046,5 +1128,22 @@ and open the template in the editor.
     .btn-blue:hover:before {
       transform: skewX(-45deg) translateX(22.5em);
       transition: all 0.5s ease-in-out; }
+
+.btn-red {
+  cursor: pointer;
+  background-color: #F6200F;
+  font-weight: 500 !important;
+  letter-spacing: 0.6px !important;
+  border: 2px solid #d81000;
+  border-radius: 5px;
+  height: 40px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  width: 100%; }
+  .btn-red:hover {
+    background-color: #d00f00; }
 
 /*# sourceMappingURL=main.css.map */

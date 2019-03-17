@@ -35,7 +35,7 @@ security:
             context:             user
             form_login:
                 provider:       fos_userbundle
-                login_path:     /login
+                login_path:     /logowanie
                 use_forward:    false
                 check_path:     /login_check
                 failure_path:   null
@@ -58,10 +58,11 @@ security:
     access_control:
         # Admin login page needs to be accessed without credential
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/logowanie$, allow_if: "is_anonymous() && !is_authenticated()" }
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/rejestracja, allow_if: "is_anonymous() && !is_authenticated()" }
 
         # Secured part of the site
         # This config requires being logged for the whole site and having the admin role for the admin part.

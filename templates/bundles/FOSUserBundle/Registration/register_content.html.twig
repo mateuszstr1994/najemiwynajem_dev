@@ -1,63 +1,82 @@
 
 
 <div class="row">
-    <div class="col-md-4 col-sm-10 m-auto">
+    <div class="col-md-5 col-sm-10 m-auto">
+        <div class="login-box">
         <div class="row">
             <div class="col-sm-12">
-                <div class="form-heading">
-                    <h1 class="form-heading primary secondary">Formularz rejestracji użytkownika</h1>
-                </div>
+                <nav class="navigation-login">
+                    <ul class="ul-log-reg">
+                        <li>
+                            <a href="{{path('fos_user_security_login')}}" >Zaloguj się</a>
+                        </li> 
+                        <li class="active">
+                            <a href="{{path('fos_user_registration_register')}}" >
+                                 <i class="fa fa-user-plus logowanie-icon icon" aria-hidden="true"></i> 
+                                 Rejestracja
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 
-                <form name="fos_user_registration_form" class="default-form fos_user_registration_register" method="POST" >
+                {{ form_start(form, {'method': 'POST', 'attr': {'class': 'default-form'} }) }}
                     <fieldset>
-                        <legend>Dane logowania:</legend>
+                        <legend>Załóż konto</legend>
                         
                         <div class="box-input {%if form.username.vars.errors|length %} focused-error {% endif%}">
-                            <label for="fos_user_registration_form[username]" class="">Nazwa użytkownika:</label>
-                            <input  placeholder="Nazwa użytkownika" type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="180" pattern=".{2,}"
-                            {% if form.vars.value.username is defined and form.vars.value.username != null %} value="{{form.vars.value.username}}" {%endif%} >
+                             <label for="{{ form.username.vars.id }}" class="{{ form.username.vars.required ? 'required' }}">
+                                   Nazwa użytkownika:
+                            </label>
+                            {{ form_widget(form.username, {'attr': {'placeholder': 'Nazwa użytkownika'}}) }}
                             <div class="form-error">
                                 {{ form_errors(form.username) }}
                             </div>
                         </div>
                         
                         <div class="box-input {%if form.email.vars.errors|length %} focused-error {% endif%}">
-                            <label for="fos_user_registration_form_email" class="">Adres e-mail:</label>
-                            <input type="email" id="fos_user_registration_form_email" placeholder="Adres e-mail" name="fos_user_registration_form[email]" required="required"
-                                    {% if form.vars.value.email is defined and form.vars.value.email != null %} value="{{form.vars.value.email}}" {% endif %}>
+                            <label for="{{ form.email.vars.id }}" class="{{ form.email.vars.required ? 'required' }}">
+                                   Adres e-mail:
+                            </label>
+                            {{ form_widget(form.email, {'attr': {'placeholder': 'Adres e-mail'}}) }}
                             <div class="form-error">
                                 {{ form_errors(form.email) }}
                             </div>
                         </div>
                         <div class="box-input {%if form.plainPassword.first.vars.errors|length %} focused-error {% endif%}">
-                            <label for="fos_user_registration_form_plainPassword_first" class="">Hasło:</label>
-                            <input type="password" placeholder="Hasło" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" autocomplete="new-password">
+                            <label for="{{ form.plainPassword.first.vars.id }}" class="{{ form.plainPassword.first.vars.required ? 'required' }}">
+                                Hasło:
+                            </label>
+                            {{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Hasło'}}) }}
                             <div class="form-error">
                                 {{ form_errors(form.plainPassword.first) }}
                             </div>
                         </div>
+                            
                         <div class="box-input {%if form.plainPassword.first.vars.errors|length %} focused-error {% endif%}">
-                            <label for="fos_user_registration_form[plainPassword][second]" class="">Powtórz hasło:</label>
-                            <input type="password" placeholder="Powtórz hasło" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" autocomplete="new-password">
+                            <label for="{{ form.plainPassword.second.vars.id }}" class="{{ form.plainPassword.second.vars.required ? 'required' }}">
+                                Powtórz hasło:
+                            </label>
+                            {{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Powtórz hasło'}}) }}
                         </div>
                         {{ form_row(form._token) }}
                     </fieldset>
                     
                     <div class="submit-contanier">
                         <div class="submit-block">
-                            <button type="submit" class="btn-blue" value="{{ 'registration.submit'|trans }}">
+                            <button type="submit"  class="btn-red" value="{{ 'registration.submit'|trans }}">
                                 <i class="fas fa-user-plus"></i>
                                     Zarejestruj się
-                            </button>
+                            </button>     
                         </div>
                     </div>
                     
-                </form>
+                {{ form_end(form) }}
             </div>
         </div>
+    </div>
     </div>
 </div>                                              

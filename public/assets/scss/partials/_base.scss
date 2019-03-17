@@ -88,11 +88,13 @@ $i:0;
 };
 
 body.body-primary  {
-  margin: 0px;
-  padding: 0px;
-  font-size: 14px;
-  font-family: 'Roboto Condensed', sans-serif;
-  background-color: $color-gray-primary; }
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: $color-gray-primary;
+    overflow-x: hidden;
+    }
 
 #LogoImg{
 	max-width:200px;
@@ -111,4 +113,9 @@ body.body-primary  {
 
 .border-primary{
 	border: 1px solid $border-color-primary !important; 
+}
+
+
+.login-box{
+    box-shadow: 0 0 50px rgba(0,0,0,.2);
 }

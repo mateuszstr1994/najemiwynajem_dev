@@ -53,7 +53,7 @@ class User extends BaseUser
     # uzytkownik awsze bedzie miał swój profil
     public function __construct()
     {
-       $this->people = new People($this);
+      // $this->people = new People($this);
     }
     
     function getPeople() {

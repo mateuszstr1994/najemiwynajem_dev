@@ -29,8 +29,8 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Controller\RegistrationController as Base;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-
 use App\Application\Sonata\UserBundle\Entity\User;
+
 /**
  * Controller managing the registration.
  *
