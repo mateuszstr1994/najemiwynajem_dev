@@ -26,7 +26,13 @@ class Menu extends BaseEntity
      *
      * @ORM\Column(type="integer")
      */
-    private $position; //use in MenuBlock 
+    private $position; 
+    
+    /**
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $block = '';
     
      /**
      * @ORM\Column(type="text", nullable=true)
@@ -121,8 +127,76 @@ class Menu extends BaseEntity
     function setStatus($status) {
         $this->status = $status;
     }
+    
+     /**
+     * Add item
+     *
+     * @param \PTDBundle\Entity\MenuItem $item
+     *
+     * @return Menu
+     */
+    public function addItem(\PTDBundle\Entity\MenuItem $item)
+    {
 
-    function setItems($items) {
-        $this->items = $items;
+        if(!$item->getMenu()){
+            $item->setMenu($this);
+        }
+        if($item->getMenu() == $this){
+            $this->items[] = $item;
+        }
+
+        return $this;
     }
+
+    public function addItems($item)
+    {
+        $item->setMenu($this);
+        if($item->getParent() == null ){
+            $this->items[] = $item;
+        }
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \PTDBundle\Entity\MenuItem $item
+     */
+    public function removeItem(\PTDBundle\Entity\MenuItem $item)
+    {
+        if($item->getMenu() == $this){
+            $item->setItemChildren([]);
+            $this->items->removeElement($item);
+        }
+    }
+
+    public function setItems($items)
+    {
+        if (count($items) > 0) {
+            foreach ($items->toArray() as $item) {
+                if(!$item->getMenu() || $item->getMenu() == null){
+                    $item->setMenu($this);
+                }
+                if ($item->getMenu()->getId() == $this->getId()){
+                    $this->addItem($item);
+                }
+            }
+        }
+        return $this;
+    }
+    
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
+    
+    function getBlock() {
+        return $this->block;
+    }
+
+    function setBlock($blockName) {
+        $this->block = $blockName;
+    }
+
+
+    
 }

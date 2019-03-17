@@ -1,0 +1,26 @@
+{# empty Twig template #}
+
+<div class="row sticky-top bg-white pt-2 pb-2 sticky-border-default">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-2 col-lg-2 align-self-center">
+                {% if app.request.get('_route') == 'homepage' %}
+                    {% include 'Parts/HeaderLogoH1.html.twig' %}
+                {% else %}
+                    {% include 'Parts/HeaderLogoH2.html.twig' %}
+                {% endif %}
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 align-self-center">
+                Wyszukiwarka        
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 align-self-center">
+                {% if app.user %}     
+                    {{ sonata_block_render({'type': 'logged.in.menu.block'}) }}
+                {% else %}
+                   {{ sonata_block_render({'type': 'authentication.menu.block'}) }}
+                {% endif %}
+            </div>
+            
+        </div>
+    </div>
+</div>

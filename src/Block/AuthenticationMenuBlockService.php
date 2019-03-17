@@ -24,8 +24,8 @@ class AuthenticationMenuBlockService extends BaseBlockService
         $resolver->setDefaults(array(
             'url' => false,
             'title' => 'Authentication Menu',
-            'position'=> 2,
             'template' => 'Block/Menu/authenticationMenu.html.twig',
+            'block' => 'notLoggedIn',
         ));
     }
 }

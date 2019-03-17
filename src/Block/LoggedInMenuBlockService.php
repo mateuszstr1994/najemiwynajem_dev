@@ -28,7 +28,7 @@ class LoggedInMenuBlockService extends MenuBlockService
         $resolver->setDefaults(array(
             'title'    => 'Authentication Menu',
             'template' => 'Block/Menu/loggedInMenu.html.twig',
-            'position' => 3,
+            'block' => 'loggedInMenu',
         ));
 
     }

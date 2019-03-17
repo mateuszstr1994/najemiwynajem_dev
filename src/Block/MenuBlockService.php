@@ -40,7 +40,7 @@ class MenuBlockService extends BaseBlockService
             'url'      => false,
             'title'    => 'Menu',
             'template' => 'empty',
-            'position' => 1,
+            'block' => 'Menu',
         ));
     }
     
@@ -59,12 +59,12 @@ class MenuBlockService extends BaseBlockService
         $settings = $blockContext->getSettings();
         
         $repositoryMenu = $this->em->getRepository(Menu::class);
-        $menu =  $repositoryMenu->findOneBy(array("position" => $settings['position'], "status" => 1));
+        $menus = $repositoryMenu->findBy(array("block" => $settings['block'], "status" => 1), array("position" => "DESC"));
 
         return $this->renderResponse($blockContext->getTemplate(), array(
             'block'     => $blockContext->getBlock(),
             'settings'  => $settings,
-            'menu' => $menu,
+            'menu' => $menus,
         ), $response);
         
     }
