@@ -99,10 +99,7 @@ class UserAdmin extends AbstractAdmin
             ->add('email')
             ->add('groups')
             ->add('people', null, ["label" => "Person"])    
-            ->add('enabled', null, ['editable' => true])
-            ->add('createdAt')
-
-        ;
+            ->add('enabled', null, ['editable' => true]);
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
             $listMapper

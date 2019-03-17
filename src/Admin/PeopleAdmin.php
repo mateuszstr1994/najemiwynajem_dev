@@ -18,8 +18,7 @@ final class PeopleAdmin extends AbstractAdmin
 			->add('id')
 			->add('name')
 			->add('surname')
-			->add('dateOfBirth')
-			;
+			->add('date_of_birth');
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -28,7 +27,7 @@ final class PeopleAdmin extends AbstractAdmin
 			->add('id')
 			->add('name')
 			->add('surname')
-			->add('dateOfBirth')
+			->add('date_of_birth')
 			->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -44,7 +43,7 @@ final class PeopleAdmin extends AbstractAdmin
 			->add('id')
 			->add('name')
 			->add('surname')
-			->add('dateOfBirth')
+			->add('date_of_birth')
                         ->add('user')
 			;
     }
@@ -55,7 +54,7 @@ final class PeopleAdmin extends AbstractAdmin
 			->add('id')
 			->add('name')
 			->add('surname')
-			->add('dateOfBirth')
+			->add('date_of_birth')
 			;
     }
 }

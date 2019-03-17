@@ -21,7 +21,7 @@ class People extends BaseEntity
      * One Product has One Shipment.
      * OneToOne(targetEntity="MembersOfCompany", mappedBy="person")
      */
-    protected $memberOfCompany;
+    protected $member_of_company;
     
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -41,7 +41,7 @@ class People extends BaseEntity
     /**
      * @ORM\Column(type="date", nullable=true)
      */
-    protected $dateOfBirth;
+    protected $date_of_birth;
     
     function getUser() {
         return $this->user;
@@ -77,18 +77,18 @@ class People extends BaseEntity
     
     public function getDateOfBirth()
     {
-        return $this->dateOfBirth;
+        return $this->date_of_birth;
     }
     
-    public function __construct(User $user)
-    {
-        parent::__construct($user);
-        $this->setUser($user);
-    }
-    
+    //public function __construct(User $user)
+    //{
+    //    parent::__construct($user);
+    //    $this->setUser($user);
+    //}
+        
     public function setDateOfBirth(\DateTime $dateOfBirth = null)
     {
-        $this->dateOfBirth = $dateOfBirth;
+        $this->date_of_Birth = $dateOfBirth;
     } 
     
     public function __toString()

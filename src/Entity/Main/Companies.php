@@ -19,7 +19,7 @@ class Companies extends BaseEntity
     /**
      * @ORM\OneToMany(targetEntity="MembersOfCompany", fetch="EXTRA_LAZY", mappedBy="company",  cascade={"persist"})
      */
-    private $membersOfCompany = [];
+    private $members_of_company = [];
     
     public function getName(): ?string
     {

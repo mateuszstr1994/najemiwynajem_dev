@@ -42,8 +42,8 @@ final class MenuAdmin extends AbstractAdmin
     {
         $datagridMapper
 			->add('name')
-			->add('createdAt')
-			->add('updateAt')
+			->add('created_at')
+			->add('update_at')
 			->add('status')
 			;
     }
@@ -57,8 +57,8 @@ final class MenuAdmin extends AbstractAdmin
                         ->add('block')
 			->add('position')
                         ->add('status')
-			->add('updateAt')
-                        ->add('createdAt')
+			->add('update_at')
+                        ->add('created_at')
 			->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -102,8 +102,8 @@ final class MenuAdmin extends AbstractAdmin
                         ->add('block')
 			->add('class')
 			->add('position')
-			->add('createdAt')
-			->add('updateAt')
+			->add('created_at')
+			->add('update_at')
 			->add('status')
 			;
     }

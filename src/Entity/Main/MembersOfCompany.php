@@ -12,7 +12,7 @@ class MembersOfCompany extends BaseEntity
 {
     
     /**
-     * @ORM\OneToOne(targetEntity="People", fetch="EXTRA_LAZY", inversedBy="memberOfCompany", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="People", fetch="EXTRA_LAZY", inversedBy="member_of_company", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $person;

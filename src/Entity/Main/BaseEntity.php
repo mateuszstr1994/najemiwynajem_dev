@@ -22,35 +22,34 @@ class BaseEntity
      *
      * @ORM\Column(type="datetime", nullable=false)
      */
-    protected $createdAt;
+    protected $created_at;
     
     /**
      *
      * @ORM\Column(type="datetime", nullable=false)
      */
-    protected $updateAt;
+    protected $update_at;
     
     /**
      * @ORM\ManyToOne(
      *      targetEntity="App\Application\Sonata\UserBundle\Entity\User",
      * )
-     * @ORM\JoinColumn(name="createdBy", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @ORM\JoinColumn(name="created_by", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
-    protected $createdBy;
+    protected $created_by;
     
     /**
      * @ORM\ManyToOne(
      *      targetEntity="App\Application\Sonata\UserBundle\Entity\User",
      * )
-     * @ORM\JoinColumn(name="updatedBy", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @ORM\JoinColumn(name="updated_by", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
-    protected $updatedBy;
+    protected $updated_by;
     
     
-    public function __construct(User $user)
+    public function __construct()
     {   
-        $this->setCreatedAt($user);
-        $this->setUpdateAt($user); 
+        
     }
     
     public function getId() {
@@ -58,19 +57,19 @@ class BaseEntity
     }
 
     public function getCreatedAt() {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
     public function getUpdateAt() {
-        return $this->updateAt;
+        return $this->update_at;
     }
 
     public function getCreatedBy() {
-        return $this->createdBy;
+        return $this->created_by;
     }
 
     public function getUpdatedBy() {
-        return $this->updatedBy;
+        return $this->updated_by;
     }
 
     public function setId($id) {
@@ -78,20 +77,20 @@ class BaseEntity
     }
 
     public function setCreatedAt() {
-        $this->createdAt =new \DateTime("now");
+        $this->created_at =new \DateTime("now");
     }
 
     public function setUpdateAt() {
         // WILL be saved in the database
-        $this->updateAt = new \DateTime("now");
+        $this->update_at = new \DateTime("now");
     }
     
     public function setCreatedBy($createdBy) {
-        $this->createdBy = $createdBy;
+        $this->created_by = $createdBy;
     }
 
     public function setUpdatedBy($updatedBy) {
-        $this->updatedBy = $updatedBy;
+        $this->updated_by = $updatedBy;
     }
     
 }
