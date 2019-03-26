@@ -1,16 +1,6 @@
 ## YAML Template.
 ---
 services:
-    
-    ptd.usernav.block:
-        class: App\Block\UserNavBlokService
-        public: true
-        arguments:
-            - 'ptd.usernav.block'
-            - '@templating'
-            - '@service_container'
-        tags:
-            - { name: sonata.block }
             
     header.default.block:
         class: App\Block\HeaderDefaulBlockService
@@ -22,22 +12,18 @@ services:
         tags:
             - { name: sonata.block }
             
-    authentication.menu.block:
-        class: App\Block\AuthenticationMenuBlockService
+    user.authenticated.menu.block:
+        class: App\Block\UserauthenticatedMenuBlockService
         public: true
         arguments:
-            - 'authentication.menu.block'
+            - 'user.authenticated.menu.block'
             - '@templating'
             - '@service_container'
         tags:
             - { name: sonata.block }
-    
-    logged.in.menu.block:
-        class: App\Block\LoggedInMenuBlockService
-        public: true
-        arguments:
-            - 'logged.in.menu.block'
-            - '@templating'
-            - '@service_container'
-        tags:
-            - { name: sonata.block }
+            
+            
+            
+            
+            
+            

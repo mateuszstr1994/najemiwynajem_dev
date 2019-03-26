@@ -20,13 +20,13 @@ class BaseEntity
     
     /**
      *
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $created_at;
     
     /**
      *
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $update_at;
     

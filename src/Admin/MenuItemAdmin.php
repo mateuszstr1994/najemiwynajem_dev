@@ -7,12 +7,12 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use App\Entity\Main\Menu;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Sonata\Form\Type\CollectionType;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 final class MenuItemAdmin extends AbstractAdmin
 {
@@ -22,16 +22,14 @@ final class MenuItemAdmin extends AbstractAdmin
         $datagridMapper
 			->add('id')
 			->add('name')
-			->add('alias')
+			->add('slug')
 			->add('url')
 			->add('position')
 			->add('description')
 			->add('icon')
 			->add('class')
-			->add('columns')
-			->add('col')
 			->add('status')
-			->add('displayedFor')
+			->add('displayed_for')
 			;
     }
 
@@ -39,18 +37,18 @@ final class MenuItemAdmin extends AbstractAdmin
     {
         $listMapper
 			->add('id')
-                        ->add('menu.name')
+                        ->add('menu')
+                        ->add('parent')
+                        ->add('item_children')
 			->add('name')
-			->add('alias')
+			->add('slug')
 			->add('url')
 			->add('position')
 			->add('description')
 			->add('icon')
 			->add('class')
-			->add('columns')
-			->add('col')
 			->add('status')
-			->add('displayedFor')
+			->add('displayed_for')
 			->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -64,27 +62,29 @@ final class MenuItemAdmin extends AbstractAdmin
     {
         switch($this->getRoot()->getClass()){
             case 'App\Entity\Main\MenuItem':
-                $formMapper
-			
+                $formMapper	
 			->add('name')
                         ->add('menu')
-			->add('alias')
+                        ->add('parent')
+//                        ->add('item_children', EntityType::class, [
+//                            'class' => 'App\Entity\Main\MenuItem',
+//                            'expanded' => false,
+//                            'multiple' => true
+//                        ])
+			->add('slug')
 			->add('url')
 			->add('position')
 			->add('description')
 			->add('icon')
 			->add('class')
-			->add('columns')
-			->add('col')
 			->add('status')
-			->add('displayedFor')
+			->add('displayed_for')
 			;
             break;
             default:
                 $formMapper
-                    ->add('name',HiddenType::class,array('attr'=>array("hidden" => true)))
-                    ->add('menu')
-                    ->add('alias')
+                    ->add('name')
+                    ->add('slug')
                     ->add('url')
                     ->add('position');
 			
@@ -95,19 +95,15 @@ final class MenuItemAdmin extends AbstractAdmin
 
     protected function configureShowFields(ShowMapper $showMapper)
     {
-       
-       
             $showMapper
 			->add('id')
 			->add('name')
-			->add('alias')
+			->add('slug')
 			->add('url')
 			->add('position')
 			->add('description')
 			->add('icon')
 			->add('class')
-			->add('columns')
-			->add('col')
 			->add('status')
 			->add('displayedFor')
 			;

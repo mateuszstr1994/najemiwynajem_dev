@@ -44,7 +44,6 @@ class MenuBlockService extends BaseBlockService
         ));
     }
     
-    
     /**
      * The block context knows the default settings, but they can be
      * overwritten in the call to render the block.
@@ -59,12 +58,13 @@ class MenuBlockService extends BaseBlockService
         $settings = $blockContext->getSettings();
         
         $repositoryMenu = $this->em->getRepository(Menu::class);
-        $menus = $repositoryMenu->findBy(array("block" => $settings['block'], "status" => 1), array("position" => "DESC"));
-
+        
+        $menu = $repositoryMenu->findOneBy(array("block" => $settings['block'], "status" => 1), array("position" => "ASC"));
+       
         return $this->renderResponse($blockContext->getTemplate(), array(
             'block'     => $blockContext->getBlock(),
             'settings'  => $settings,
-            'menu' => $menus,
+            'menu' => $menu,
         ), $response);
         
     }

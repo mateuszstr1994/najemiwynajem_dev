@@ -38,13 +38,7 @@ class Menu extends BaseEntity
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
-    
-    /**
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $alias = '';
-    
+     
      /**
      *
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -84,10 +78,6 @@ class Menu extends BaseEntity
         return $this->description;
     }
 
-    function getAlias() {
-        return $this->alias;
-    }
-
     function getClass() {
         return $this->class;
     }
@@ -116,10 +106,6 @@ class Menu extends BaseEntity
         $this->description = $description;
     }
 
-    function setAlias($alias) {
-        $this->alias = $alias;
-    }
-
     function setClass($class) {
         $this->class = $class;
     }
@@ -128,75 +114,41 @@ class Menu extends BaseEntity
         $this->status = $status;
     }
     
+    function getBlock() {
+        return $this->block;
+    }
+
+    function setBlock($block) {
+        $this->block = $block;
+    }
+    
      /**
      * Add item
      *
-     * @param \PTDBundle\Entity\MenuItem $item
      *
      * @return Menu
      */
-    public function addItem(\PTDBundle\Entity\MenuItem $item)
+    public function addItem(MenuItem $item)
     {
-
-        if(!$item->getMenu()){
-            $item->setMenu($this);
-        }
-        if($item->getMenu() == $this){
+        if (!$this->items->contains($item)) {
             $this->items[] = $item;
+            $item->setMenu($this); 
         }
 
         return $this;
     }
 
-    public function addItems($item)
+    public function removeItem(MenuItem $item)
     {
-        $item->setMenu($this);
-        if($item->getParent() == null ){
-            $this->items[] = $item;
-        }
-    }
-
-    /**
-     * Remove item
-     *
-     * @param \PTDBundle\Entity\MenuItem $item
-     */
-    public function removeItem(\PTDBundle\Entity\MenuItem $item)
-    {
-        if($item->getMenu() == $this){
+        if($this->items->contains($item)){
             $item->setItemChildren([]);
             $this->items->removeElement($item);
         }
-    }
-
-    public function setItems($items)
-    {
-        if (count($items) > 0) {
-            foreach ($items->toArray() as $item) {
-                if(!$item->getMenu() || $item->getMenu() == null){
-                    $item->setMenu($this);
-                }
-                if ($item->getMenu()->getId() == $this->getId()){
-                    $this->addItem($item);
-                }
-            }
-        }
-        return $this;
     }
     
     public function __toString()
     {
         return (string) $this->name;
     }
-    
-    function getBlock() {
-        return $this->block;
-    }
-
-    function setBlock($blockName) {
-        $this->block = $blockName;
-    }
-
-
     
 }

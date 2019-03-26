@@ -4,11 +4,9 @@
 
 sonata_block:
     blocks:
-        ptd.usernav.block:
         header.default.block:
-        authentication.menu.block:
-        logged.in.menu.block:
-            
+        user.authenticated.menu.block:
+ 
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts: [admin]

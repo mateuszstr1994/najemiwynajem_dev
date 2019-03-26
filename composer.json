@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "friendsofsymfony/user-bundle": "^2.1",
+        "php-ffmpeg/php-ffmpeg": "^0.13.0",
         "sensio/framework-extra-bundle": "^5.1",
         "sonata-project/admin-bundle": "^3.43",
         "sonata-project/block-bundle": "^3.13",

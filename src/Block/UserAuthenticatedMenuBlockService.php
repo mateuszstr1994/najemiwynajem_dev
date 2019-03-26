@@ -11,30 +11,29 @@ use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService;
+use App\Entity\Main\Menu;
 
-class UserNavBlokService extends BaseBlockService
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use App\Block\MenuBlockService;
+
+class UserAuthenticatedMenuBlockService extends MenuBlockService
 {
-    public function getName()
-    {
-        return 'Rss Reader';
-    }
+    protected $container;
+    protected $em;
     
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'url'      => false,
-            'title'    => 'User Navigation',
-           
-            'template' => 'App/NIW/Resources/views/Block/test.html.twig',
+            'title'    => 'Menu',
+            'template' => 'Block\Menu\userAuthenticatedMenu.html.twig',
+            'block' => 'user_authenticated_menu'
         ));
     }
     
-     public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function getName()
     {
-        
-
-       return new Response(
-            '<html><body>Lucky number: </body></html>'
-        );
+        return 'User Authenticated Menu';
     }
 }

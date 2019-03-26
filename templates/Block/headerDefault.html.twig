@@ -15,9 +15,9 @@
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4 align-self-center">
                 {% if app.user %}     
-                    {{ sonata_block_render({'type': 'logged.in.menu.block'}) }}
+                    {{ sonata_block_render({'type': 'user.authenticated.menu.block'}) }}
                 {% else %}
-                   {{ sonata_block_render({'type': 'authentication.menu.block'}) }}
+                   
                 {% endif %}
             </div>
             

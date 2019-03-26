@@ -79,7 +79,7 @@ final class MenuAdmin extends AbstractAdmin
             ->add('class')
             ->add('items', \Sonata\CoreBundle\Form\Type\CollectionType::class, array(
                 'label' => 'Menu items',
-                'by_reference' => true,
+                'by_reference' => false,
                 'type_options' => array('delete' => true)
             ), array(
                     'edit' => 'inline',

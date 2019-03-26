@@ -5,6 +5,7 @@ namespace App\Entity\Main;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Menu;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Main\MenuItemRepository")
@@ -20,7 +21,7 @@ class MenuItem extends BaseEntity
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $alias = '';
+    private $slug = '';
 
     /**
      *
@@ -50,18 +51,6 @@ class MenuItem extends BaseEntity
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $class;
-    
-    /**
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $columns;
-
-    /**
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $col;
 
     /**
      * @ORM\ManyToOne(targetEntity="Menu", inversedBy="items")
@@ -69,7 +58,7 @@ class MenuItem extends BaseEntity
     private $menu;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MenuItem", inversedBy="itemChildren", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="MenuItem", inversedBy="item_children", cascade={"persist"})
      * @ORM\JoinColumn(name="parent", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $parent;
@@ -79,22 +68,22 @@ class MenuItem extends BaseEntity
      * @ORM\JoinColumn(name="parent", referencedColumnName="id")
      *
      */
-    protected $itemChildren;
+    protected $item_children;
 
     /**
      *
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $status;
 
     /**
-     * @ORM\Column(name="displayedFor", type="string", columnDefinition="enum('all', 'logged in', 'not logged in', 'UserPrivate', 'UserCompany')")
+     * @ORM\Column( type="string", columnDefinition="enum('all', 'logged in', 'not logged in', 'UserPrivate', 'UserCompany')")
      */
-    private $displayedFor = 'all';
+    private $displayed_for = 'all';
 
     public function __construct()
     {
-        $this->itemChildren = new ArrayCollection();
+        $this->item_children = new ArrayCollection();
     }
     
     public function getName(): ?string
@@ -109,14 +98,18 @@ class MenuItem extends BaseEntity
         return $this;
     }
 
-    public function getAlias(): ?string
+    public function getSlug(): ?string
     {
-        return $this->alias;
+        return $this->slug;
     }
 
-    public function setAlias(?string $alias): self
+    public function setSlug(?string $slug): self
     {
-        $this->alias = $alias;
+        if($slug){
+            $this->slug = $this->slugify($slug);
+        } else {
+            $this->slug = $this->slugify($this->name);
+        }
 
         return $this;
     }
@@ -150,7 +143,7 @@ class MenuItem extends BaseEntity
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
@@ -181,30 +174,6 @@ class MenuItem extends BaseEntity
         return $this;
     }
 
-    public function getColumns(): ?int
-    {
-        return $this->columns;
-    }
-
-    public function setColumns(int $columns): self
-    {
-        $this->columns = $columns;
-
-        return $this;
-    }
-
-    public function getCol(): ?int
-    {
-        return $this->col;
-    }
-
-    public function setCol(int $col): self
-    {
-        $this->col = $col;
-
-        return $this;
-    }
-
     public function getStatus(): ?bool
     {
         return $this->status;
@@ -219,22 +188,22 @@ class MenuItem extends BaseEntity
 
     public function getDisplayedFor(): ?string
     {
-        return $this->displayedFor;
+        return $this->displayed_for;
     }
 
     public function setDisplayedFor(string $displayedFor): self
     {
-        $this->displayedFor = $displayedFor;
+        $this->displayed_for = $displayedFor;
 
         return $this;
     }
 
-    public function getMenu(): ?Menu
+    public function getMenu()
     {
         return $this->menu;
     }
 
-    public function setMenu(?Menu $menu): self
+    public function setMenu($menu): self
     {
         $this->menu = $menu;
 
@@ -252,39 +221,32 @@ class MenuItem extends BaseEntity
 
         return $this;
     }
-
-    /**
-     * @return Collection|MenuItem[]
-     */
-    public function getItemChildren(): Collection
-    {
-        return $this->itemChildren;
-    }
-
-    public function addItemChild(MenuItem $itemChild): self
-    {
-        if (!$this->itemChildren->contains($itemChild)) {
-            $this->itemChildren[] = $itemChild;
-            $itemChild->setParent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeItemChild(MenuItem $itemChild): self
-    {
-        if ($this->itemChildren->contains($itemChild)) {
-            $this->itemChildren->removeElement($itemChild);
-            // set the owning side to null (unless already changed)
-            if ($itemChild->getParent() === $this) {
-                $itemChild->setParent(null);
-            }
-        }
-
-        return $this;
+    
+    public function getItemChildren() {
+        return $this->item_children;
     }
     
-   public function __toString() {
+    public function setItemChildren($itemChildren) {
+        $this->item_children = $itemChildren;
+    }
+    
+    public function removeItem(MenuItem $item)
+    {
+        $this->itemChildren->removeElement($item);
+    }
+    
+    public function __toString() 
+    {
         return (string) $this->name;
     }
+    
+    public function slugify($string)
+    {
+        return preg_replace(
+            '/[^a-z0-9]/',
+            '-',
+            strtolower(trim(strip_tags($string)))
+        );
+    }
+    
 }
