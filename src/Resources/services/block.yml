@@ -21,6 +21,16 @@ services:
             - '@service_container'
         tags:
             - { name: sonata.block }
+    
+    user.unauthenticated.menu.block:
+        class: App\Block\UserUnauthenticatedMenuBlockService
+        public: true
+        arguments:
+            - 'user.unauthenticated.menu.block'
+            - '@templating'
+            - '@service_container'
+        tags:
+            - { name: sonata.block }
             
             
             

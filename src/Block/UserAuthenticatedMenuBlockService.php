@@ -28,7 +28,7 @@ class UserAuthenticatedMenuBlockService extends MenuBlockService
             'url'      => false,
             'title'    => 'Menu',
             'template' => 'Block\Menu\userAuthenticatedMenu.html.twig',
-            'block' => 'user_authenticated_menu'
+            'alias' => 'user_authenticated_menu'
         ));
     }
     

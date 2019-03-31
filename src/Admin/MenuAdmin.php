@@ -53,8 +53,9 @@ final class MenuAdmin extends AbstractAdmin
         $listMapper
 			->add('id')
 			->add('name')
+                        ->add('alias')
 			->add('class')
-                        ->add('block')
+                        ->add('id_attribute')
 			->add('position')
                         ->add('status')
 			->add('update_at')
@@ -74,9 +75,10 @@ final class MenuAdmin extends AbstractAdmin
                
             ->add('name')
             ->add('position')
-            ->add('block')
+            ->add('alias')
             ->add('status', null, array('label' => 'active'))
             ->add('class')
+            ->add('id_attribute')
             ->add('items', \Sonata\CoreBundle\Form\Type\CollectionType::class, array(
                 'label' => 'Menu items',
                 'by_reference' => false,
@@ -99,8 +101,9 @@ final class MenuAdmin extends AbstractAdmin
         $showMapper
 			->add('id')
 			->add('name')
-                        ->add('block')
+                        ->add('alias')
 			->add('class')
+                        ->add('id_attribute')
 			->add('position')
 			->add('created_at')
 			->add('update_at')

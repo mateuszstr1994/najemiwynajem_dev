@@ -1,0 +1,40 @@
+{% if app.debug %}    
+    {% set appDev = 'index.php/' %} 
+{% else %}
+    {% set appDev = '' %} 
+{% endif %}
+
+<ul class="nav justify-content-end ">
+    <li class="nav-item ml-2">
+        <a class="nav-link button-primary-outline" href="#">
+            <i class="fas fa-plus mr-2"></i>Dodaj ogłoszenie
+        </a>
+    </li>
+    {% for arrayMenuItem in arrayMenuItemTree %}
+        <li class="nav-item dropdown animate-hover-slide-bottom  ml-2 position-relative ">
+             <button class="nav-link button-primary-light dropdown-toggle"  id="DropdownMenuLoggedOut" data-toggle="dropdown" >
+                {% if arrayMenuItem.icon is defined and arrayMenuItem.icon |trim |length > 0 %}
+                    <i class="{{arrayMenuItem.icon}} "></i> {{arrayMenuItem.title |capitalize}}
+                {% endif %}
+            </button>
+            {% for menuItem in arrayMenuItem['__children'] %}
+                {% if loop.first %}
+                    <ul class="dropdown-menu p-0" aria-labelledby="DropdownMenuLoggedOut">
+                {% endif %}
+                    <li class="dropdown-item">
+                        <a class="{{menuItem.class_attribute}}" title="{{menuItem.title_attribute}}" 
+                           href="/{{appDev}}{{menuItem.slug}}">
+                            {% if menuItem.icon is defined and menuItem.icon |trim |length > 0 %}
+                                <i class="{{menuItem.icon}} "></i>
+                            {% endif %}
+                            {{menuItem.title |capitalize}}
+                        </a>
+                    </li>
+                {% if loop.last %}
+                    </ul>
+                {% endif %}
+            {% endfor %} 
+        </li>
+    {% endfor %}
+ 
+</ul> 

@@ -15,33 +15,26 @@ use App\Entity\Main\Menu;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use App\Block\MenuBlockService;
 
-
-class MenuBlockService extends BaseBlockService
+class UserUnauthenticatedMenuBlockService extends MenuBlockService
 {
     protected $container;
     protected $em;
-    
-    public function __construct($name, EngineInterface $templating, ContainerInterface $container )
-    {
-        parent::__construct($name, $templating);
-        $this->container = $container;
-        $this->em = $this->container->get('doctrine')->getEntityManager();
-    }
-    
-    public function getName()
-    {
-        return 'Menu Block';
-    }
     
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'url'      => false,
             'title'    => 'Menu',
-            'template' => 'empty',
-            'alias' => 'Menu',
+            'template' => 'Block\Menu\userUnauthenticatedMenu.html.twig',
+            'alias' => 'user_unauthenticated_menu'
         ));
+    }
+    
+    public function getName()
+    {
+        return 'User Unauthenticated Menu';
     }
     
     /**
@@ -62,16 +55,21 @@ class MenuBlockService extends BaseBlockService
         
         $menu = $repositoryMenu->findOneBy(array("alias" => $settings['alias'], "status" => 1));
         $menuItemsRoot = $repoMenuItem->findOneBy(array('parent' => null, 'menu' => $menu));
-        //trzeba raczej zamienić to na inne drzewo xd 
         
-        $arrayMenuItemTree = $repoMenuItem->childrenHierarchy();
-        var_dump($arrayMenuItemTree);
-        
+        $arrayMenuItemTree = $repoMenuItem->childrenHierarchy( 
+            null, /* starting from root nodes */  
+            true, /* true: load all children, false: only direct */
+            array(
+        'decorate' => false,
+        'childSort' => array('field' => 'position', 'dir' => 'asc')));
+
         return $this->renderResponse($blockContext->getTemplate(), array(
             'block'     => $blockContext->getBlock(),
-            'settings'  => $settings
+            'settings'  => $settings,
+            'arrayMenuItemTree' => $arrayMenuItemTree
         ), $response);
         
     }
+    
     
 }

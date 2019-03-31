@@ -32,7 +32,7 @@ class Menu extends BaseEntity
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $block = '';
+    private $alias = '';
     
      /**
      * @ORM\Column(type="text", nullable=true)
@@ -44,6 +44,12 @@ class Menu extends BaseEntity
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $class = '';
+    
+    /**
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $id_attribute;
 
     /**
      *
@@ -51,14 +57,14 @@ class Menu extends BaseEntity
      */
     private $status;
     
-     /**
+    /**
      * @ORM\OneToMany(targetEntity="MenuItem", mappedBy="menu", cascade={"persist", "remove"}, orphanRemoval=true)
-     * @ORM\OrderBy({"position": "ASC"})
      */
     protected $items = [];
 
-    function __construct()
+    public function __construct()
     {
+        parent::__construct();
         $this->items = new ArrayCollection();
     }
     
@@ -86,10 +92,6 @@ class Menu extends BaseEntity
         return $this->status;
     }
 
-    function getItems() {
-        return $this->items;
-    }
-
     function setName($name) {
         $this->name = $name;
     }
@@ -109,6 +111,14 @@ class Menu extends BaseEntity
     function setClass($class) {
         $this->class = $class;
     }
+    
+    function getIdAttribute() {
+        return $this->id_attribute;
+    }
+
+    function setIdAttribute($idAttribute) {
+        $this->id_attribute = $idAttribute;
+    }
 
     function setStatus($status) {
         $this->status = $status;
@@ -122,33 +132,48 @@ class Menu extends BaseEntity
         $this->block = $block;
     }
     
-     /**
-     * Add item
-     *
-     *
-     * @return Menu
-     */
-    public function addItem(MenuItem $item)
-    {
-        if (!$this->items->contains($item)) {
-            $this->items[] = $item;
-            $item->setMenu($this); 
-        }
-
-        return $this;
+    function getAlias() {
+        return $this->alias;
     }
 
-    public function removeItem(MenuItem $item)
-    {
-        if($this->items->contains($item)){
-            $item->setItemChildren([]);
-            $this->items->removeElement($item);
-        }
+    function setAlias($alias) {
+        $this->alias = $alias;
     }
     
     public function __toString()
     {
         return (string) $this->name;
+    }
+
+    /**
+     * @return Collection|MenuItem[]
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function addItem(MenuItem $item): self
+    {
+        if (!$this->items->contains($item)) {
+            $this->items[] = $item;
+            $item->setMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItem(MenuItem $item): self
+    {
+        if ($this->items->contains($item)) {
+            $this->items->removeElement($item);
+            // set the owning side to null (unless already changed)
+            if ($item->getMenu() === $this) {
+                $item->setMenu(null);
+            }
+        }
+
+        return $this;
     }
     
 }

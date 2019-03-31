@@ -17,7 +17,7 @@
                 {% if app.user %}     
                     {{ sonata_block_render({'type': 'user.authenticated.menu.block'}) }}
                 {% else %}
-                   
+                   {{ sonata_block_render({'type': 'user.unauthenticated.menu.block'}) }}
                 {% endif %}
             </div>
             
