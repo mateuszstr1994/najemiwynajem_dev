@@ -12,9 +12,10 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use App\Entity\Main\Menu;
-
+use App\Entity\Main\MenuItem;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Doctrine\Common\Util\Debug;
 
 
 class MenuBlockService extends BaseBlockService
@@ -56,22 +57,28 @@ class MenuBlockService extends BaseBlockService
         }
         
         $settings = $blockContext->getSettings();
-        
-        $repositoryMenu = $this->em->getRepository(Menu::class);
-        $repoMenuItem = $this->em->getRepository('App\Entity\Main\MenuItem');
-        
-        $menu = $repositoryMenu->findOneBy(array("alias" => $settings['alias'], "status" => 1));
-        $menuItemsRoot = $repoMenuItem->findOneBy(array('parent' => null, 'menu' => $menu));
-        //trzeba raczej zamienić to na inne drzewo xd 
-        
-        $arrayMenuItemTree = $repoMenuItem->childrenHierarchy();
-        var_dump($arrayMenuItemTree);
-        
+        $menuItemTreeArray = $this->getMenu($settings);
+
         return $this->renderResponse($blockContext->getTemplate(), array(
             'block'     => $blockContext->getBlock(),
-            'settings'  => $settings
+            'settings'  => $settings,
+            'menuItemTreeArray' => $menuItemTreeArray,
         ), $response);
         
+    }
+    
+    public function getMenu($settings) {
+        // Nie stosować reposytorium, tylko serwis !!!!
+        $repositoryMenu = $this->em->getRepository(Menu::class);
+        $repoMenuItem = $this->em->getRepository(MenuItem::class);
+        
+        $menu = $repositoryMenu->findOneBy(array("alias" => $settings['alias'], "status" => 1));
+        
+        $menuItemTree = $repoMenuItem->findOneBy(array('parent' => null, 'menu' => $menu, "status" => 1));
+        $menuItemTreeArray = $repoMenuItem->childrenHierarchy($menuItemTree, true, ['childSort' => array('field' => 'position', 'dir' => 'asc')], true);
+        
+        return $menuItemTreeArray;
+   
     }
     
 }

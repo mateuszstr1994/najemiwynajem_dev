@@ -1,26 +1,45 @@
-    {# empty Twig template #}
+{% if app.debug %}    
+    {% set appDev = 'index.php/' %} 
+{% else %}
+    {% set appDev = '' %} 
+{% endif %}
+
 <ul class="nav justify-content-end ">
+    
     <li class="nav-item ml-2">
         <a class="nav-link button-primary-outline" href="#">
             <i class="fas fa-plus mr-2"></i>Dodaj ogłoszenie
         </a>
     </li>
-    
- 
-    <li class="nav-item dropdown animate-hover-slide-bottom  ml-2 position-relative ">
-        <button class="nav-link button-primary-light dropdown-toggle "  id="DropdownMenuLoggedOut" data-toggle="dropdown" >
-            <i class="fas fa-user mr-1 "></i> Moje Konto 
-        </button>
+    {% for menuItemRoot in menuItemTreeArray %}
         
-        <ul class="dropdown-menu p-0" aria-labelledby="DropdownMenuLoggedOut">
-            <li class="dropdown-item">
-                <a class="btn btn-login-menu" href="#">Zaloguj się</a>
-            </li>
-                <div class="dropdown-divider p-0 m-0"></div>
-            <li class=" dropdown-item ">
-                <a class=" btn btn-login-menu" href="">Zarejestruj się</a>
-            </li>
-        </ul>
-    </li>
+        <li class="nav-item dropdown animate-hover-slide-bottom  ml-2 position-relative ">
+             <button class="nav-link button-primary-light dropdown-toggle"  id="DropdownMenuLoggedOut" data-toggle="dropdown" >
+                {% if menuItemRoot['icon'] is defined and menuItemRoot['icon'] |trim |length > 0 %}
+                    <i class="{{menuItemRoot['icon']}} "></i>
+                {% endif %}
+                {{menuItemRoot['title'] |capitalize}}
+                
+            </button>
+            {% for menuItem in menuItemRoot['__children'] %}
+                {% if loop.first %}
+                    <ul class="dropdown-menu p-0" aria-labelledby="DropdownMenuLoggedOut">
+                {% endif %}
+                    <li class="dropdown-item">
+                       
+                        <a class="{{menuItem['class_attribute']}}" title="" 
+                           href="/{{appDev}}{{menuItem['slug']}}">
+                            {% if menuItem['icon'] is defined and menuItem['icon'] |trim |length > 0 %}
+                                <i class="{{menuItem['icon']}} "></i>
+                            {% endif %}
+                            {{menuItem['title'] |capitalize}}
+                        </a>
+                    </li>
+                {% if loop.last %}
+                    </ul>
+                {% endif %}
+            {% endfor %} 
+        </li>
+    {% endfor %}
  
 </ul> 
