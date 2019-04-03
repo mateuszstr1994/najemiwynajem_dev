@@ -32,12 +32,18 @@ doctrine:
             ApplicationSonataPageBundle: ~ # only once the ApplicationSonataPageBundle is generated
             SonataPageBundle: ~
             ApplicationSonataUserBundle: ~
-            SomeEntityNamespace:
+            ApplicationEntity:
                     type: annotation
                     dir: '%kernel.project_dir%/src/Entity'
                     is_bundle: false
-                    prefix: App\Entity\Main
+                    prefix: App\Entity
                     alias: App
+#            SomeEntityNamespace:
+#                    type: annotation
+#                    dir: '%kernel.project_dir%/src/Entity'
+#                    is_bundle: false
+#                    prefix: App\Entity\Main
+#                    alias: App
             gedmo_translatable:
                     type: annotation
                     prefix: Gedmo\Translatable\Entity

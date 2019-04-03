@@ -11,8 +11,8 @@ use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService;
-use App\Entity\Main\Menu;
-use App\Entity\Main\MenuItem;
+use App\Entity\Menu;
+use App\Entity\MenuItem;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Doctrine\Common\Util\Debug;
@@ -67,7 +67,7 @@ class MenuBlockService extends BaseBlockService
         
     }
     
-    public function getMenu($settings) {
+    public function getMenu(array $settings) {
         // Nie stosować reposytorium, tylko serwis !!!!
         $repositoryMenu = $this->em->getRepository(Menu::class);
         $repoMenuItem = $this->em->getRepository(MenuItem::class);
@@ -78,7 +78,6 @@ class MenuBlockService extends BaseBlockService
         $menuItemTreeArray = $repoMenuItem->childrenHierarchy($menuItemTree, true, ['childSort' => array('field' => 'position', 'dir' => 'asc')], true);
         
         return $menuItemTreeArray;
-   
     }
     
 }

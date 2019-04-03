@@ -16,6 +16,7 @@ parameters:
 
 imports:
     - { resource: '../src/Resources/services/block.yml' }
+    - { resource: '../src/Resources/services/sonata_admin.yml' }
 
 services:
     # default configuration for services in *this* file
@@ -34,46 +35,7 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
-        
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-
-    admin.menu:
-        class: App\Admin\MenuAdmin
-        arguments: [~, App\Entity\Main\Menu, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: Menu, label: Menu, icon: "<i class=\"mr-2 fas  fa-bars\"></i>" }
-        public: true
-
-    admin.menu_item:
-        class: App\Admin\MenuItemAdmin
-        arguments: [~, App\Entity\Main\MenuItem, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: Menu, label: MenuItem, icon: "<i class=\"mr-2 fas fa-bars\"></i>" }
-        public: true
-
-    admin.country:
-        class: App\Admin\CountryAdmin
-        arguments: [~, App\Entity\Main\Country, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: Settings, label: Country, icon: "<i class=\"mr-2 fas fa-cogs\"></i>" }
-        public: true
-
-    admin.people:
-        class: App\Admin\PeopleAdmin
-        arguments: [~, App\Entity\Main\People, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: People, label: People, icon: "<i class=\"mr-2 fa fa-users\"></i>" }
-        public: true
-        
-        
+  
     App\Controller\RegistrationController:
         arguments:
-            $formFactory: '@fos_user.registration.form.factory'
-            
-    app.validation.service:
-        class: App\Service\ValidationService
-        arguments: [ "@doctrine.orm.entity_manager",  '@service_container' ]
-        public: true
-    
-    
+            $formFactory: '@fos_user.registration.form.factory'        

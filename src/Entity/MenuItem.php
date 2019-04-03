@@ -1,5 +1,5 @@
 <?php
-namespace App\Entity\Main;
+namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @Gedmo\Tree(type="closure")
- * @Gedmo\TreeClosure(class="App\Entity\Main\MenuItemClosure")
+ * @Gedmo\TreeClosure(class="App\Entity\MenuItemClosure")
  * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\ClosureTreeRepository")
  * @ORM\Table(name="menu_item")
  */

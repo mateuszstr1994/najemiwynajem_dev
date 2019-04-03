@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Entity\Main;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Application\Sonata\UserBundle\Entity\User;
-use Symfony\Component\Validator\Constraints as Assert;
-/**
- * Represents a Base Entity.
- */
+
 class BaseEntity
 {
     

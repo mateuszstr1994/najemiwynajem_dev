@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Entity\Main;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\Main\CountryRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="country")
  */
 class Country extends BaseEntity
 {
@@ -52,7 +53,7 @@ class Country extends BaseEntity
     protected $region;
     
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Main\People", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="App\Entity\People", mappedBy="country")
      */
     protected $people;
     
@@ -167,5 +168,28 @@ class Country extends BaseEntity
     
     public function __toString() {
         return (string) $this->name;
+    }
+
+    public function addPerson(People $person): self
+    {
+        if (!$this->people->contains($person)) {
+            $this->people[] = $person;
+            $person->setCountry($this);
+        }
+
+        return $this;
+    }
+
+    public function removePerson(People $person): self
+    {
+        if ($this->people->contains($person)) {
+            $this->people->removeElement($person);
+            // set the owning side to null (unless already changed)
+            if ($person->getCountry() === $this) {
+                $person->setCountry(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -15,7 +15,7 @@ fos_user:
     registration:
         confirmation:
             enabled: true
-    
+
     from_email:
         address: "test@mateuszstr1994.civ.pl"
         sender_name: "test@mateuszstr1994.civ.pl"

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Entity\Main;
+namespace App\Entity;
 
+use App\Application\Sonata\UserBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Main\People;
-use App\Entity\Main\Companies;
+
 /**
- * @ORM\Entity(repositoryClass="App\Repository\Main\MembersOfCompanyRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="members_of_company")
  */
 class MembersOfCompany extends BaseEntity
 {
-    
     /**
      * @ORM\OneToOne(targetEntity="People", fetch="EXTRA_LAZY", inversedBy="member_of_company", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
@@ -37,5 +37,11 @@ class MembersOfCompany extends BaseEntity
     function setCompany($company) {
         $this->company = $company;
     }
-
 }
+
+
+
+
+
+
+

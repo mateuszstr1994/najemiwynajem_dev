@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Entity\Main;
+namespace App\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Application\Sonata\UserBundle\Entity\User;
-use App\Entity\Main\MembersOfCompany;
+use App\Entity\MembersOfCompany;
+
 /**
- * @ORM\Entity(repositoryClass="App\Repository\Main\PeopleRepository")
+ * @ORM\Entity
  */
 class People extends BaseEntity
 {   
@@ -34,7 +35,7 @@ class People extends BaseEntity
     protected $surname;
     
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Main\Country", inversedBy="people")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Country", inversedBy="people")
      */
     protected $country;
             
@@ -103,7 +104,17 @@ class People extends BaseEntity
     {
         return $this->memberOfCompany;
     }
-    
-    
-    
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?Country $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+  
 }
