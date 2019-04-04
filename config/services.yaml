@@ -17,6 +17,7 @@ parameters:
 imports:
     - { resource: '../src/Resources/services/block.yml' }
     - { resource: '../src/Resources/services/sonata_admin.yml' }
+    - { resource: '../src/Resources/services/fos_user.yml' }
 
 services:
     # default configuration for services in *this* file
@@ -35,7 +36,4 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
-  
-    App\Controller\RegistrationController:
-        arguments:
-            $formFactory: '@fos_user.registration.form.factory'        
+       

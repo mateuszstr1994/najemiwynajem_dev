@@ -48,7 +48,7 @@ class MenuItem
     private $title_attribute;
     
     /**
-     * @ORM\Column(name="slug", type="string")
+     * @ORM\Column(name="slug", type="string", nullable=true)
      */
     private $slug;
     

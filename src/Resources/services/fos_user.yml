@@ -1,0 +1,14 @@
+## YAML Template.
+---
+services:
+            
+#    Inaczej wygeneruje błąd, przy nadpisywaniu np. @fos_user.registration.form.factory
+#    Błąd generowało tylko kiedy przeniosłem to do nowego pliku i importuje        
+    FOS\UserBundle\Form\Factory\FactoryInterface:
+        alias: 'fos_user.registration.form.factory' 
+        public: true 
+ 
+# Nadpisanie controllera do rejestracji
+    App\Controller\RegistrationController:
+        arguments:
+            $formFactory: '@fos_user.registration.form.factory'
