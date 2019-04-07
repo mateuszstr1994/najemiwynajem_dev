@@ -33,16 +33,9 @@ class User extends BaseUser
      * @var int $id
      */
     protected $id;
-
-    /**
-     * Get id.
-     *
-     * @return int $id
-     */
     
     protected $people;
-    
- 
+   
     protected $email;
     
     public function getId()

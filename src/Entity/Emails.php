@@ -30,8 +30,8 @@ class Emails extends BaseEntity
     private $template;
      
     /**
-     * @ORM\ManyToOne(targetEntity="People")
-     * @ORM\JoinColumn(name="people_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @ORM\ManyToOne(targetEntity="App\Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $recipient;
    
@@ -82,7 +82,7 @@ class Emails extends BaseEntity
         return $this->recipient;
     }
 
-    public function setRecipient(?People $recipient): self
+    public function setRecipient(?User $recipient): self
     {
         $this->recipient = $recipient;
 

@@ -35,9 +35,9 @@ class People extends BaseEntity
     protected $surname;
     
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Country", inversedBy="people")
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
-    protected $country;
+    protected $email;
             
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -48,7 +48,7 @@ class People extends BaseEntity
         return $this->user;
     }
     
-    function setUser(\App\Application\Sonata\UserBundle\Entity\User $user) {
+    function setUser(User $user) {
         $this->user = $user;
     }
 
@@ -81,11 +81,11 @@ class People extends BaseEntity
         return $this->date_of_birth;
     }
     
-    //public function __construct(User $user)
-    //{
-    //    parent::__construct($user);
-    //    $this->setUser($user);
-    //}
+//    public function __construct(User $user)
+//    {
+//        //parent::__construct($user);
+//        //$this->setUser($user);
+//    }
         
     public function setDateOfBirth(\DateTime $dateOfBirth = null)
     {
@@ -113,6 +113,18 @@ class People extends BaseEntity
     public function setCountry(?Country $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

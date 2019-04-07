@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\People;
-
+use App\Application\Sonata\UserBundle\Entity\User;
 /**
  * @ORM\Entity
  * @ORM\Table(name="send_emails")
@@ -27,8 +27,8 @@ class SendEmails extends BaseEntity
     private $body_html;
     
     /**
-     * @ORM\ManyToOne(targetEntity="People")
-     * @ORM\JoinColumn(name="people_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @ORM\ManyToOne(targetEntity="App\Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $recipient;
     
@@ -84,7 +84,7 @@ class SendEmails extends BaseEntity
         return $this->recipient;
     }
 
-    public function setRecipient(?People $recipient): self
+    public function setRecipient(?User $recipient): self
     {
         $this->recipient = $recipient;
 
