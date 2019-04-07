@@ -4,9 +4,12 @@ fos_user:
     db_driver:      orm # can be orm or odm
     firewall_name:  main
     user_class:     App\Application\Sonata\UserBundle\Entity\User
+    
 
     service:
         user_manager: sonata.user.orm.user_manager
+        
+        
         
     group:
         group_class:   App\Application\Sonata\UserBundle\Entity\Group

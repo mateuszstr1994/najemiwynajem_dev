@@ -7,8 +7,19 @@ services:
     FOS\UserBundle\Form\Factory\FactoryInterface:
         alias: 'fos_user.registration.form.factory' 
         public: true 
+        
+    FOS\UserBundle\Mailer\MailerInterface:
+        alias: 'fos_user.mailer' 
+        public: true
  
-# Nadpisanie controllera do rejestracji
+    # Nadpisanie controllera do rejestracji
     App\Controller\RegistrationController:
         arguments:
             $formFactory: '@fos_user.registration.form.factory'
+    
+    # Nadpisanie eventu od rejestracji success
+    fos_user.registration.success:
+        class: App\EventListener\EmailConfirmationListener
+        arguments:    ["@fos_user.mailer", "@fos_user.util.token_generator", "@router", "@session"]
+        tags:
+            - { name: kernel.event_subscriber }
