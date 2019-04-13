@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Application\Sonata\UserBundle\Entity\User;
 
-class BaseEntity
+abstract class AbstractBaseEntity
 {
     
     /**

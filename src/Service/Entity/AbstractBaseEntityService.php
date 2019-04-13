@@ -5,7 +5,7 @@ namespace App\Service\Entity;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-abstract class BaseEntityAbstractService
+abstract class AbstractBaseEntityService
 {
     protected $entityClass;
     protected $entity;

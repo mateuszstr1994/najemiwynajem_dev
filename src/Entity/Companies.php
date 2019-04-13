@@ -12,7 +12,7 @@ use App\Entity\MembersOfCompany;
  * @ORM\Entity
  * @ORM\Table(name="companies")
  */
-class Companies extends BaseEntity
+class Companies extends AbstractBaseEntity
 {
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

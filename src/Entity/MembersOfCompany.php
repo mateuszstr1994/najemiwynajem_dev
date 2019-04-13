@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="members_of_company")
  */
-class MembersOfCompany extends BaseEntity
+class MembersOfCompany extends AbstractBaseEntity
 {
     /**
      * @ORM\OneToOne(targetEntity="People", fetch="EXTRA_LAZY", inversedBy="member_of_company", cascade={"persist"})

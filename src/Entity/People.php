@@ -10,7 +10,7 @@ use App\Entity\MembersOfCompany;
 /**
  * @ORM\Entity
  */
-class People extends BaseEntity
+class People extends AbstractBaseEntity
 {   
      /**
      * @ORM\OneToOne(targetEntity="App\Application\Sonata\UserBundle\Entity\User", fetch="EXTRA_LAZY", inversedBy="people", cascade={"persist"})

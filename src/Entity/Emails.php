@@ -10,7 +10,7 @@ use App\Entity\SendEmails;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmailsRepository")
  */
-class Emails extends BaseEntity
+class Emails extends AbstractBaseEntity
 {
     /**
      * @ORM\Column(type="json")

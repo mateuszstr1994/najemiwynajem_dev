@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\BaseEntity;
+use App\Entity\AbstractBaseEntity;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmailTemplatesRepository")
  */
-class EmailTemplates extends BaseEntity
+class EmailTemplates extends AbstractBaseEntity
 {
     /**
      * @ORM\Column(type="string", length=255)

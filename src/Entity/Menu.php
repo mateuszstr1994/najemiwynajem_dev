@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="menu")
  */
-class Menu extends BaseEntity
+class Menu extends AbstractBaseEntity
 {
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

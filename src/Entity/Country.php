@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\Collection;
  * @ORM\Entity
  * @ORM\Table(name="country")
  */
-class Country extends BaseEntity
+class Country extends AbstractBaseEntity
 {
     /**
      * @ORM\Column(type="string", length=255, nullable=true)

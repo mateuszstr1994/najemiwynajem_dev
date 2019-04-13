@@ -9,7 +9,7 @@ use App\Application\Sonata\UserBundle\Entity\User;
  * @ORM\Entity
  * @ORM\Table(name="send_emails")
  */
-class SendEmails extends BaseEntity
+class SendEmails extends AbstractBaseEntity
 {
     /**
      * @ORM\Column(type="string", length=255)
