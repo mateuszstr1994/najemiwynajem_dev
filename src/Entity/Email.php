@@ -3,76 +3,78 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\EmailTemplate;
 use App\Entity\Person;
-use App\Entity\SendEmail;
-
+use App\Application\Sonata\UserBundle\Entity\User;
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EmailRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="email")
  */
 class Email extends AbstractBaseEntity
 {
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string", length=255)
      */
-    private $data;
+    private $subject;
     
     /**
-     * @ORM\ManyToOne(targetEntity="SendEmail", inversedBy="emails")
-     * 
+     * @ORM\Column(type="text", nullable=true, length=65535)
      */
-    private $send_emails;
+    private $body_plain_text;
     
     /**
-     * @ORM\ManyToOne(targetEntity="EmailTemplate")
-     * 
+     * @ORM\Column(type="text", nullable=true, length=65535)
      */
-    private $template;
-     
+    private $body_html;
+    
     /**
      * @ORM\ManyToOne(targetEntity="App\Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $recipient;
-   
+    
+    /**
+     * OneToMany(targetEntity="EmailItem", mappedBy="email", fetch="EXTRA_LAZY", cascade={"persist"})
+     */
+    private $email_item = [];
+    
     /**
      *
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $date_sent;
 
-    public function getData(): ?array
+    public function getSubject(): ?string
     {
-        return $this->data;
+        return $this->subject;
     }
 
-    public function setData(array $data): self
+    public function setSubject(string $subject): self
     {
-        $this->data = $data;
+        $this->subject = $subject;
 
         return $this;
     }
 
-    public function getSendEmail(): ?SendEmail
+    public function getBodyPlainText(): ?string
     {
-        return $this->send_email;
+        return $this->body_plain_text;
     }
 
-    public function setSendEmail(?SendEmail $send_emails): self
+    public function setBodyPlainText(?string $body_plain_text): self
     {
-        $this->send_email = $send_email;
+        $this->body_plain_text = $body_plain_text;
 
         return $this;
     }
 
-    public function getTemplate(): ?EmailTemplate
+    public function getBodyHtml(): ?string
     {
-        return $this->template;
+        return $this->body_html;
     }
 
-    public function setTemplate(?EmailTemplate $template): self
+    public function setBodyHtml(?string $body_html): self
     {
-        $this->template = $template;
+        $this->body_html = $body_html;
 
         return $this;
     }
@@ -100,4 +102,5 @@ class Email extends AbstractBaseEntity
 
         return $this;
     }
+    
 }
