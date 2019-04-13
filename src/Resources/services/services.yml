@@ -6,6 +6,6 @@ services:
         public: true    
     
     app.email.service:
-        class: App\Service\Entity\EmailsService
+        class: App\Service\Entity\EmailService
         arguments: [ "@doctrine.orm.entity_manager",  '@service_container']
     

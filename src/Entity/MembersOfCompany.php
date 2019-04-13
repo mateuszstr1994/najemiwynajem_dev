@@ -7,18 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="members_of_company")
+ * @ORM\Table(name="member_of_company")
  */
-class MembersOfCompany extends AbstractBaseEntity
+class MemberOfCompany extends AbstractBaseEntity
 {
     /**
-     * @ORM\OneToOne(targetEntity="People", fetch="EXTRA_LAZY", inversedBy="member_of_company", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Person", fetch="EXTRA_LAZY", inversedBy="member_of_company", cascade={"persist"})
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $person;
     
      /**
-     * @ORM\ManyToOne(targetEntity="Companies", inversedBy="company",  cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Company", inversedBy="company",  cascade={"persist"})
      */
     private $company;
         

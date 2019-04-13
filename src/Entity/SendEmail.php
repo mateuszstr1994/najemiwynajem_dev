@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\People;
+use App\Entity\Person;
 use App\Application\Sonata\UserBundle\Entity\User;
 /**
  * @ORM\Entity
- * @ORM\Table(name="send_emails")
+ * @ORM\Table(name="send_email")
  */
-class SendEmails extends AbstractBaseEntity
+class SendEmail extends AbstractBaseEntity
 {
     /**
      * @ORM\Column(type="string", length=255)
@@ -79,7 +79,7 @@ class SendEmails extends AbstractBaseEntity
         return $this;
     }
 
-    public function getRecipient(): ?People
+    public function getRecipient(): ?Person
     {
         return $this->recipient;
     }

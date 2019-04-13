@@ -10,7 +10,7 @@
             <generator strategy="AUTO" />
         </id>
         
-        <one-to-one field="people" target-entity="\App\Entity\People" mapped-by="user">
+        <one-to-one field="person" target-entity="\App\Entity\Person" mapped-by="user">
             <cascade>
                 <cascade-persist/>
             </cascade>

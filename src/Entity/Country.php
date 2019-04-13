@@ -53,21 +53,21 @@ class Country extends AbstractBaseEntity
     protected $region;
     
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\People", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="App\Entity\Person", mappedBy="country")
      */
-    protected $people;
+    protected $person;
     
     public function __construct()
     {
-        $this->people = new ArrayCollection();
+        $this->person = new ArrayCollection();
     }
     
     /**
      * @return Collection|Product[]
      */
-    public function getPeople(): Collection
+    public function getPerson(): Collection
     {
-        return $this->getPeople;
+        return $this->getPerson;
     }
 
     public function getName(): ?string
@@ -170,20 +170,20 @@ class Country extends AbstractBaseEntity
         return (string) $this->name;
     }
 
-    public function addPerson(People $person): self
+    public function addPerson(Person $person): self
     {
-        if (!$this->people->contains($person)) {
-            $this->people[] = $person;
+        if (!$this->person->contains($person)) {
+            $this->person[] = $person;
             $person->setCountry($this);
         }
 
         return $this;
     }
 
-    public function removePerson(People $person): self
+    public function removePerson(Person $person): self
     {
-        if ($this->people->contains($person)) {
-            $this->people->removeElement($person);
+        if ($this->person->contains($person)) {
+            $this->person->removeElement($person);
             // set the owning side to null (unless already changed)
             if ($person->getCountry() === $this) {
                 $person->setCountry(null);

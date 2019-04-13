@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\EmailTemplates;
-use App\Entity\People;
-use App\Entity\SendEmails;
+use App\Entity\EmailTemplate;
+use App\Entity\Person;
+use App\Entity\SendEmail;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EmailsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\EmailRepository")
  */
-class Emails extends AbstractBaseEntity
+class Email extends AbstractBaseEntity
 {
     /**
      * @ORM\Column(type="json")
@@ -18,13 +18,13 @@ class Emails extends AbstractBaseEntity
     private $data;
     
     /**
-     * @ORM\ManyToOne(targetEntity="SendEmails", inversedBy="emails")
+     * @ORM\ManyToOne(targetEntity="SendEmail", inversedBy="emails")
      * 
      */
     private $send_emails;
     
     /**
-     * @ORM\ManyToOne(targetEntity="EmailTemplates")
+     * @ORM\ManyToOne(targetEntity="EmailTemplate")
      * 
      */
     private $template;
@@ -53,31 +53,31 @@ class Emails extends AbstractBaseEntity
         return $this;
     }
 
-    public function getSendEmails(): ?SendEmails
+    public function getSendEmail(): ?SendEmail
     {
-        return $this->send_emails;
+        return $this->send_email;
     }
 
-    public function setSendEmails(?SendEmails $send_emails): self
+    public function setSendEmail(?SendEmail $send_emails): self
     {
-        $this->send_emails = $send_emails;
+        $this->send_email = $send_email;
 
         return $this;
     }
 
-    public function getTemplate(): ?EmailTemplates
+    public function getTemplate(): ?EmailTemplate
     {
         return $this->template;
     }
 
-    public function setTemplate(?EmailTemplates $template): self
+    public function setTemplate(?EmailTemplate $template): self
     {
         $this->template = $template;
 
         return $this;
     }
 
-    public function getRecipient(): ?People
+    public function getRecipient(): ?Person
     {
         return $this->recipient;
     }

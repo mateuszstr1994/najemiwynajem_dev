@@ -17,9 +17,9 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Settings, label: Country, icon: "<i class=\"mr-2 fas fa-cogs\"></i>" }
 
-    admin.people:
-        class: App\Admin\PeopleAdmin
-        arguments: [~, App\Entity\People, ~]
+    admin.person:
+        class: App\Admin\PersonAdmin
+        arguments: [~, App\Entity\Person, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: People, label: People, icon: "<i class=\"mr-2 fa fa-users\"></i>" }
             

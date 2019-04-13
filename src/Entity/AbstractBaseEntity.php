@@ -5,6 +5,10 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Application\Sonata\UserBundle\Entity\User;
 
+/**
+ * @ORM\MappedSuperclass
+ */
+
 abstract class AbstractBaseEntity
 {
     

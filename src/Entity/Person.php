@@ -2,25 +2,24 @@
 
 namespace App\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use App\Application\Sonata\UserBundle\Entity\User;
-use App\Entity\MembersOfCompany;
+use App\Entity\MemberOfCompany;
 
 /**
  * @ORM\Entity
  */
-class People extends AbstractBaseEntity
+class Person extends AbstractBaseEntity
 {   
      /**
-     * @ORM\OneToOne(targetEntity="App\Application\Sonata\UserBundle\Entity\User", fetch="EXTRA_LAZY", inversedBy="people", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="App\Application\Sonata\UserBundle\Entity\User", fetch="EXTRA_LAZY", inversedBy="person", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $user;
     
      /**
      * One Product has One Shipment.
-     * OneToOne(targetEntity="MembersOfCompany", mappedBy="person")
+     * OneToOne(targetEntity="MemberOfCompany", mappedBy="person")
      */
     protected $member_of_company;
     
