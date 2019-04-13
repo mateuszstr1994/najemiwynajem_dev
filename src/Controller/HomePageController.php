@@ -4,11 +4,14 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomePageController extends AbstractController
+class HomePageController extends BaseController
 {
 
-    public function index(\Swift_Mailer $mailer)
+    public function index()
     {   
+        
+        $this->get('app.email.service');
+        
         return $this->render('base.html.twig', [
             'controller_name' => 'MainController',
         ]);

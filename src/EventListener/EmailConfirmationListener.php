@@ -32,8 +32,9 @@ class EmailConfirmationListener extends BaseEmailConfirmationListener
         if (null === $user->getConfirmationToken()) {
             $user->setConfirmationToken($this->tokenGenerator->generateToken());
         }
+        
 
-        $this->mailer->sendConfirmationEmailMessage($user);
+        //$this->mailer->sendConfirmationEmailMessage($user);
 
         $this->session->set('fos_user_send_confirmation_email/email', $user->getEmail());
 

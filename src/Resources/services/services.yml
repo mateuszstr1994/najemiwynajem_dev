@@ -1,0 +1,11 @@
+## YAML Template.
+---
+services:
+   
+    _defaults: 
+        public: true    
+    
+    app.email.service:
+        class: App\Service\Entity\EmailsService
+        arguments: [ "@doctrine.orm.entity_manager",  '@service_container']
+    

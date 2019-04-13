@@ -46,7 +46,7 @@ class BaseEntity
     
     public function __construct()
     {   
-        
+        $this->setCreatedAt(new \DateTime("now"));
     }
     
     public function getId() {
