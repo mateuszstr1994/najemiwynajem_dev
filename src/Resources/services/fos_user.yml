@@ -1,8 +1,8 @@
 ## YAML Template.
 ---
 services:
-     
-    _defaults: { public: true }   
+    _defaults: 
+        public: true
     
 #    Inaczej wygeneruje błąd, przy nadpisywaniu np. @fos_user.registration.form.factory
 #    Błąd generowało tylko kiedy przeniosłem to do nowego pliku i importuje        
@@ -19,9 +19,10 @@ services:
         arguments:
             $formFactory: '@fos_user.registration.form.factory'
     
-    # Nadpisanie eventu od rejestracji success
-    fos_user.registration.success:
-        class: App\EventListener\EmailConfirmationListener
-        arguments:    ["@fos_user.mailer", "@fos_user.util.token_generator", "@router", "@session", "@service_container"]
-        tags:
-            - { name: kernel.event_subscriber }
+#    # Nadpisanie eventu od rejestracji success. Nie uzywać jeśli jest autoconfigure na true
+#    fos_user.registration.success:
+#        class: 'App\EventListener\EmailConfirmationListener'
+#        arguments:    ["@fos_user.mailer", "@fos_user.util.token_generator", "@router", "@session", "@service_container"]
+#        tags:
+#            - { name: kernel.event_subscriber, event: some.event.name }
+            

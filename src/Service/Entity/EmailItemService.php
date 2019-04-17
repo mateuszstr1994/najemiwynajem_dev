@@ -21,13 +21,17 @@ class EmailItemService
       
     }
     
-    final function create($user = null) {
+    function create($user = null) {
         
         $EmailItem = new EmailItem();
+        return $EmailItem;
         
+    }
+    
+    function save($EmailItem) {
+                
         $this->em->persist($EmailItem);
         $this->em->flush();
-        
     }
     
     

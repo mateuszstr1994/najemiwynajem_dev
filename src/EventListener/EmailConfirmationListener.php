@@ -73,8 +73,9 @@ class EmailConfirmationListener extends BaseEmailConfirmationListener
             $user->setConfirmationToken($this->tokenGenerator->generateToken());
         }
         
-    
-               
+        $emailItem = $this->emailItemService->create();
+        $this->emailItemService->save($emailItem);
+        
         //$this->mailer->sendConfirmationEmailMessage($user);
 
         $this->session->set('fos_user_send_confirmation_email/email', $user->getEmail());
