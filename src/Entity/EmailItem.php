@@ -13,7 +13,7 @@ use App\Entity\Email;
 class EmailItem extends AbstractBaseEntity
 {
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="json", nullable=true)
      */
     private $data;
     

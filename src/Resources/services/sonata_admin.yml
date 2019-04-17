@@ -29,3 +29,30 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Test }
         public: true
+        
+    
+    admin.test2:
+        class: App\Admin\Test2Admin
+        arguments: [~, App\Entity\Test2, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Test2 }
+        public: true
+        calls:
+            - [addChild, ['@admin.test3']]
+        
+    admin.test3:
+        class: App\Admin\Test3Admin
+        arguments: [~, App\Entity\Test3, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Test3 }
+        public: true
+        calls:
+            - [addChild, ['@admin.test4']]
+        
+    admin.test4:
+        class: App\Admin\Test4Admin
+        arguments: [~, App\Entity\Test4, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Test4 }
+        public: true
+        

@@ -22,6 +22,6 @@ services:
     # Nadpisanie eventu od rejestracji success
     fos_user.registration.success:
         class: App\EventListener\EmailConfirmationListener
-        arguments:    ["@fos_user.mailer", "@fos_user.util.token_generator", "@router", "@session"]
+        arguments:    ["@fos_user.mailer", "@fos_user.util.token_generator", "@router", "@session", "@service_container"]
         tags:
             - { name: kernel.event_subscriber }

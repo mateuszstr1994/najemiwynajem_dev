@@ -8,4 +8,8 @@ services:
     app.email.service:
         class: App\Service\Entity\EmailService
         arguments: [ "@doctrine.orm.entity_manager",  '@service_container']
+        
+    app.email_item.service:
+        class: App\Service\Entity\EmailItemService
+        arguments: [ "@doctrine.orm.entity_manager",  '@service_container']
     

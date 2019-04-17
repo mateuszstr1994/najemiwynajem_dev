@@ -19,14 +19,17 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 use FOS\UserBundle\EventListener\EmailConfirmationListener as BaseEmailConfirmationListener;
 
-class EmailConfirmationListener implements EventSubscriberInterface
+class EmailConfirmationListener extends BaseEmailConfirmationListener
 {
     private $mailer;
     private $tokenGenerator;
     private $router;
     private $session;
+    protected $emailItemService;
 
     /**
      * EmailConfirmationListener constructor.
@@ -36,12 +39,15 @@ class EmailConfirmationListener implements EventSubscriberInterface
      * @param UrlGeneratorInterface   $router
      * @param SessionInterface        $session
      */
-    public function __construct(MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator, UrlGeneratorInterface $router, SessionInterface $session)
+    public function __construct(MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator, 
+            UrlGeneratorInterface $router, SessionInterface $session, ContainerInterface $container )
     {
         $this->mailer = $mailer;
         $this->tokenGenerator = $tokenGenerator;
         $this->router = $router;
         $this->session = $session;
+        $this->container = $container;
+        $this->emailItemService = $this->container->get('app.email_item.service');
     }
 
     /**
@@ -66,8 +72,10 @@ class EmailConfirmationListener implements EventSubscriberInterface
         if (null === $user->getConfirmationToken()) {
             $user->setConfirmationToken($this->tokenGenerator->generateToken());
         }
-
-        $this->mailer->sendConfirmationEmailMessage($user);
+        
+    
+               
+        //$this->mailer->sendConfirmationEmailMessage($user);
 
         $this->session->set('fos_user_send_confirmation_email/email', $user->getEmail());
 

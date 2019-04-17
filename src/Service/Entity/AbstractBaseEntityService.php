@@ -46,6 +46,8 @@ abstract class AbstractBaseEntityService
        {
            throw new \Exception("Setting invalid entity.  Expecting entity to be of type: ".$this->entityClass);
        }
+       
+        $this->entity = $entity; 
     }
 }
 
