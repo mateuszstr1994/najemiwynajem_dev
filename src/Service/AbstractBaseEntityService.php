@@ -35,9 +35,6 @@ abstract class AbstractBaseEntityService
         
         method_exists($this->entity, 'setCreatedBy') ? 
             $this->entity->setCreatedBy($this->user) : $this->entity->setCreatedBy(null);
-            
-        method_exists($this->entity, 'setUpdatedBy') ? 
-            $this->entity->setUpdatedBy($this->user) : $this->entity->setUpdatedBy(null);
         
         method_exists($this->entity, 'setCreatedAt') ? 
             $this->entity->setCreatedAt(new \DateTime('now')): '';
@@ -55,6 +52,9 @@ abstract class AbstractBaseEntityService
         
             method_exists($this->entity, 'setUpdateAt') ? 
                 $this->entity->setUpdateAt(new \DateTime('now')): '';
+            
+            method_exists($this->entity, 'setUpdatedBy') ? 
+                $this->entity->setUpdatedBy($this->user) : $this->entity->setUpdatedBy(null);
         
             $this->em->persist($this->entity);
             $this->em->flush();
