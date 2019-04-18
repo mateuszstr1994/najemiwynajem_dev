@@ -1,15 +1,12 @@
 ## YAML Template.
 ---
 services:
-   
     _defaults: 
-        public: true    
-    
-    app.email.service:
-        class: App\Service\Entity\EmailService
-        arguments: [ "@doctrine.orm.entity_manager",  '@service_container']
-        
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true  # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means 
+
     app.email_item.service:
-        class: App\Service\Entity\EmailItemService
+        class: App\Service\EmailItemService
         arguments: [ "@doctrine.orm.entity_manager",  '@service_container']
-    
+        public: true
