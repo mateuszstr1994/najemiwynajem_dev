@@ -20,4 +20,9 @@ class EmailItemService extends AbstractBaseEntityService
 
     }
     
+    public function create() {
+        parent::create();
+        
+    }
+    
 }

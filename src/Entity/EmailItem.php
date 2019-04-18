@@ -9,6 +9,7 @@ use App\Entity\Email;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="email__item")
  */
 class EmailItem extends AbstractBaseEntity
 {
