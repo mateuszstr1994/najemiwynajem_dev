@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="email__sending_priority")
+ * @ORM\Table(name="email__priority")
  */
-class EmailSendingPriority extends AbstractBaseEntity
+class EmailPriority extends AbstractBaseEntity
 {
     /**
      *
@@ -19,9 +19,9 @@ class EmailSendingPriority extends AbstractBaseEntity
     
     /**
      * One EmailSendigPriority has many EmailSendingTime.
-     * @ORM\OneToMany(targetEntity="EmailSendingTime", mappedBy="priority")
+     * @ORM\ManyToOne(targetEntity="EmailTimeTable", inversedBy="priority")
      */
-    private $sending_time;
+    private $timetable;
     
     public function __construct() {
         parent::__construct;
