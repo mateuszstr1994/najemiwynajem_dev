@@ -32,4 +32,5 @@ return [
     Sonata\PageBundle\SonataPageBundle::class => ['all' => true],
     App\Application\Sonata\PageBundle\ApplicationSonataPageBundle::class => ['all' => true],
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
+    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
 ];
