@@ -13,16 +13,23 @@ class EmailItemService extends AbstractBaseEntityService
     protected $entityClass = EmailItem::class;
     protected $em;
     protected $entity;
+
     
     public function __construct(EntityManager $entityManager, ContainerInterface $container)
     {
       parent::__construct($entityManager, $container);
-
     }
-    
-    public function create() {
+
+    public function create(string $template = null, array $data = []) {
+
         parent::create();
-        
+
+        $emailTemplate = $this->container->get('app.email_template.service')->findOneBy(array('name' => $template));
+
+        if($emailTemplate == null) {
+        } else {
+            $this->entity->setTemplate($emailTemplate);
+        }
     }
     
 }

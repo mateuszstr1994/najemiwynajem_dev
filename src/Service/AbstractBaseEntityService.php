@@ -8,12 +8,37 @@ use Symfony\Component\Security\Core\Security;
 
 abstract class AbstractBaseEntityService
 {
+    /**
+     * @var
+     */
     protected $entityClass;
+    /**
+     * @var
+     */
     protected $entity;
+    /**
+     * @var array
+     */
     protected $errors = [];
+    /**
+     * @var EntityManager
+     */
     protected $em;
-    private $user = null;
-   
+    /**
+     * @var
+     */
+    protected $repository;
+    /**
+     * @var null
+     */
+    protected $user = null;
+
+    /**
+     * AbstractBaseEntityService constructor.
+     * @param EntityManager $entityManager
+     * @param ContainerInterface $container
+     * @throws \Exception
+     */
     public function __construct(EntityManager $entityManager, ContainerInterface $container)
     {
         $this->em = $entityManager;
@@ -26,10 +51,16 @@ abstract class AbstractBaseEntityService
         {
            throw new \Exception("Missing entity class.");
         }
+
+        $this->repository = $this->em->getRepository($this->entityClass);
       
     }
-   
-    public function create() 
+
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function create()
     {
         $this->setEntity(new $this->entityClass());
         
@@ -37,21 +68,25 @@ abstract class AbstractBaseEntityService
             $this->entity->setCreatedBy($this->user) : $this->entity->setCreatedBy(null);
         
         method_exists($this->entity, 'setCreatedAt') ? 
-            $this->entity->setCreatedAt(new \DateTime('now')): '';
+            $this->entity->setCreatedAt(): '';
         
         return $this->entity;
     }
-   
-    public function save() 
+
+    /**
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save()
     {
         if(!empty($this->entity))
         {
             if(method_exists($this->entity, 'getCreatedAt') && 
                 method_exists($this->entity, 'setCreatedAt') && $this->entity->getCreatedAt() == null) 
-                    $this->entity->setCreatedAt(new \DateTime('now'));
+                    $this->entity->setCreatedAt();
         
             method_exists($this->entity, 'setUpdateAt') ? 
-                $this->entity->setUpdateAt(new \DateTime('now')): '';
+                $this->entity->setUpdateAt(): '';
             
             method_exists($this->entity, 'setUpdatedBy') ? 
                 $this->entity->setUpdatedBy($this->user) : $this->entity->setUpdatedBy(null);
@@ -61,7 +96,11 @@ abstract class AbstractBaseEntityService
         }
  
     }
-    
+
+    /**
+     * @param $entity
+     * @throws \Exception
+     */
     public function setEntity($entity)
     {
        if(!is_a($entity, $this->entityClass))
@@ -71,10 +110,24 @@ abstract class AbstractBaseEntityService
        
         $this->entity = $entity; 
     }
-    
+
+    /**
+     * @return array
+     */
     public function getErrors()
     {
        return $this->errors;
     }
+
+
+    /**
+     * @param array $array
+     * @return mixed
+     */
+    public function findOneBy(array $array) {
+        return $this->repository->findOneBy($array);
+    }
+
+
 }
 

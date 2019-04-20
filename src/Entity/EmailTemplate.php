@@ -33,35 +33,88 @@ class EmailTemplate extends AbstractBaseEntity
     private $body_html;
     
     /**
-     * @ManyToOne(targetEntity="EmailPriority")
+     * @ORM\ManyToOne(targetEntity="EmailPriority")
      */
     private $priority;
 
-    public function getName(): ?string
+    /**
+     * @return mixed
+     */
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
     {
         $this->name = $name;
-
-        return $this;
     }
 
-    public function getSubject(): ?string
+    /**
+     * @return mixed
+     */
+    public function getSubject()
     {
         return $this->subject;
     }
 
-    public function setSubject(string $subject): self
+    /**
+     * @param mixed $subject
+     */
+    public function setSubject($subject): void
     {
         $this->subject = $subject;
-
-        return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getBodyPlainText()
+    {
+        return $this->body_plain_text;
+    }
 
-    
-    
+    /**
+     * @param mixed $body_plain_text
+     */
+    public function setBodyPlainText($body_plain_text): void
+    {
+        $this->body_plain_text = $body_plain_text;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBodyHtml()
+    {
+        return $this->body_html;
+    }
+
+    /**
+     * @param mixed $body_html
+     */
+    public function setBodyHtml($body_html): void
+    {
+        $this->body_html = $body_html;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @param mixed $priority
+     */
+    public function setPriority($priority): void
+    {
+        $this->priority = $priority;
+    }
+
 }
