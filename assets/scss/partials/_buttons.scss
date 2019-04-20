@@ -1,0 +1,173 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2019-01-12, 18:52:06
+    Author     : pc
+*/
+
+@keyframes sheen {
+  0% {
+    transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+
+.button-primary-outline {
+    text-align: center;
+    text-decoration: none;
+    background-color:white;
+    width:100%;
+    color: $color-primary;
+    border: 2px solid #F6200F !important;
+    letter-spacing: 0.6px !important;
+    height: 40px;
+
+    display: inline-block;
+    border-radius: 0.3em;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    &:before {
+        content: "";
+        background-color: rgba(255,255,255,0.5);
+        height: 100%;
+        width: 3em;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -4.5em;
+        transform: skewX(-45deg) translateX(0);
+        transition: none;
+    }
+    &:hover {
+        background-color: $color-primary;
+        color: #fff;
+        border-bottom: 4px solid darken($color-primary, 10%);
+        &:before {
+            transform: skewX(-45deg) translateX(13.5em);
+            transition: all 0.5s ease-in-out;
+        }
+    }
+}
+
+
+.button-primary-light{
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    
+    &:focus {
+        border: 0px solid transparent;
+    }
+}
+
+
+.btn-primary{
+	background-color: $second-color !important;
+	border:1px solid $second-color !important;
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-white;
+	font-size:$font-size-small !important;
+}
+
+.btn-black{
+	background-color: $color-white !important;
+	border:1px solid $color-white !important;
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-black;
+	border-radius:0px !important;
+	font-size:$font-size-small-5 !important;
+	&:focus{
+		box-shadow:none;
+	}
+}
+
+.btn-login-menu{
+	font-weight: 500!important;
+	letter-spacing:0.6px!important;
+	color: $color-black;
+	padding:0.25rem;
+	border-radius:0px !important;
+	font-size:$font-size-small-5 !important;
+}
+
+.btn-blue{
+    background-color: #025EC3 !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.6px !important;
+    border: 2px solid #0054b1 !important;
+    border-radius:5px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 0.95rem !important;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    
+    
+    &:before {
+        content: "";
+        background-color: rgba(255,255,255,0.5);
+        height: 100%;
+        width: 2em;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -4.5em;
+        transform: skewX(-45deg) translateX(0);
+        transition: none;
+    }
+    &:hover {
+        background-color: $color-primary;
+        color: #fff;
+        border-bottom: 4px solid darken($color-primary, 10%);
+        &:before {
+            transform: skewX(-45deg) translateX(22.5em);
+            transition: all 0.5s ease-in-out;
+        }
+    }
+    
+}
+
+.btn-red { 
+    cursor: pointer;
+    background-color: $color-red;
+    font-weight: 500 !important;
+    letter-spacing: 0.6px !important;
+    border: 2px solid $color-dark-red;
+    border-radius:5px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    
+    &:hover {
+        background-color: $color-dark-2-red;
+    }
+    
+}
+

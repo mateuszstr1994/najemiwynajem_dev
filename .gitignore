@@ -49,3 +49,7 @@
 /public/assets/bower_components/
 /nbproject/
 /var/
+/public/
+/.env.test
+/.env
+/assets/bower_components/

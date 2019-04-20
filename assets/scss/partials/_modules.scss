@@ -1,0 +1,264 @@
+// Formularze
+
+form.default-form {
+    
+    padding: $s-5;
+    background-color: $color-white;
+    transition-duration:2s;
+    
+    @include default-border(1px, solid, $color-gray-dark);
+    border-top:0px;
+    
+    fieldset{    
+        width: $w-85;
+        margin: auto;
+        margin-top: $s-3;
+    }
+    
+    legend{
+        @include default-border(2px, solid, $color-dark-blue, bottom);
+        font-weight: $bold; 
+        font-size: $font-size-big2;
+        margin-bottom:$s-2;
+    }
+    
+    .login-error-block {
+        margin-top:$s-3;
+        margin-left:0;
+        padding-left:0px;
+        padding:$s-2;
+        color:$color-red;
+        font-weight: bold;
+        font-size:$s-4;
+        border: 2px solid $color-red;
+    }
+    
+    .login-error-icon {
+        margin-right:$s-3;
+    }
+    
+    .box-remeber-me {
+        display: flex;
+        align-items: center;
+    }
+    
+    .box-checkbox{
+        width:90%;
+        margin-top:$s-6;
+        margin-right:auto;
+        margin-left:auto;
+        position:relative;
+        
+        
+        label{
+            font-size: $s-90;
+            display: inline-block;
+            margin-bottom:0px;
+        }
+        
+        input{
+            margin-right:$s-2;
+        }
+        
+    }
+    
+    .box-input{
+        
+        width:90%;
+        display:block;
+        transition: transform 150ms ease-out, font-size 150ms ease-out;
+        margin-bottom:$s-2;
+        margin-right:auto;
+        margin-left:auto;
+        position:relative;
+        
+        .form-error {
+            ul {
+                margin-top:$s-3;
+                margin-left:0;
+                padding-left:0px;
+                padding:$s-2;
+                
+                li{
+                    list-style: none;
+                    font-weight:bold;
+                    color:$color-red;
+                }
+                
+                li:before
+                {
+                    content: "*";
+                    margin-right:$s-2;
+                    color:$color-red;
+                }
+            }
+        }
+        
+        input {
+            @include default-input-text();
+            outline-style:none;
+            box-shadow:none; 
+            background-color:white;
+        }
+        
+        label{
+            font-size: $s-90;
+            display: block;
+            width: $w-90;
+            margin-bottom:0px;
+            opacity:0;
+            transition: 0.25s;
+        }
+
+    }
+    
+    div.focused{
+        
+        label{
+            display:block;
+            opacity:1;
+            position:relative;
+            transform: translateY(-25%);
+            font-size: $s-90;
+            font-weight: $font-weight;
+            margin-top:$s-5;
+        }
+            
+        input {
+            border-bottom:2px solid $color-red;  
+        }
+            
+        input::-webkit-input-placeholder{
+            color:transparent;
+        }
+    }
+    
+    div.focused-error{
+        
+        label{
+            display:block;
+            opacity:1;
+            position:relative;
+            transform: translateY(-25%);
+            font-size: $s-90;
+            font-weight: $font-weight;
+            margin-top:$s-5;
+            visibility: initial;
+        }
+            
+        input {
+            border-bottom:2px solid $color-red;  
+        }
+            
+        input::-webkit-input-placeholder{
+            color:transparent;
+        }
+    }
+    
+    .submit-contanier{
+        
+        width: $w-85;
+        margin: 0 auto;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        
+        .submit-block{ 
+            display:block;
+            margin:0 auto;
+            width: calc(90% - 2px);
+        }
+        
+        button{    
+            display:block;
+            margin: 0 auto;
+        }
+        
+        .icon {
+            margin-right: $s-2;
+        }
+        
+    }
+}
+nav.navigation-login {
+   display:block;
+   width:100%;
+   
+   @include default-border(1px, solid, $color-gray-dark);
+   border-bottom:0px;
+
+   .ul-log-reg {
+       @include set_grid(2);
+       margin:0px;
+       padding-left:0px;
+       background-color:white;
+       li {
+           width:100%;
+           list-style: none;
+           padding:$s-3;
+           border-bottom: 2px solid $color-dark-blue;
+           font-size: $font-size-normal;
+           text-align:center;
+           
+           .icon {
+               margin-right: $s-2;
+           }
+           
+           a {
+               color: black;
+               font-weight:bold;
+           }
+           
+           a:hover {
+               border-bottom:0px;
+           }
+       }
+
+        li.active{ 
+           border-bottom: 2px solid $color-red;
+           
+           .icon {
+                color: $color-red;
+            }
+           
+           
+        }
+   }
+   
+}
+
+#check-email-block {
+    
+    padding: $s-5;
+    background-color: $color-white;
+    transition-duration:2s;
+    @include default-border(1px, solid, $color-gray-dark);
+    
+    p {
+        font-size:$s-4;
+    }
+}
+
+.heading-block {
+    
+    display: inline-block;
+    
+    >h1 {
+       padding:$s-4;
+       margin: $s-0;
+       display: inline-block;
+       font-size: $font-size-huge;
+    }
+    
+    > h1.primary{
+        background-color: $color-red;
+        color:$color-white
+    }
+    
+    > h1.secondary{
+        background-color: $color-blue;
+        color:$color-white
+    }
+    
+}
+
+
