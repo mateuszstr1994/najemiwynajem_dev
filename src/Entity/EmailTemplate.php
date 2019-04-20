@@ -8,6 +8,7 @@ use App\Entity\AbstractBaseEntity;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="email__template")
  */
 class EmailTemplate extends AbstractBaseEntity
 {
@@ -30,6 +31,11 @@ class EmailTemplate extends AbstractBaseEntity
      * @ORM\Column(type="text", nullable=true, length=65535)
      */
     private $body_html;
+    
+    /**
+     * @ManyToOne(targetEntity="EmailPriority")
+     */
+    private $priority;
 
     public function getName(): ?string
     {
@@ -54,4 +60,8 @@ class EmailTemplate extends AbstractBaseEntity
 
         return $this;
     }
+
+
+    
+    
 }
