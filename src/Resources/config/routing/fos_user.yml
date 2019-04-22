@@ -9,3 +9,9 @@ fos_user_security_login:
     path: /logowanie
     defaults:
         _controller: App\Controller\SecurityController::loginAction
+
+
+fos_user_registration_confirm:
+  path: rejestracja/potwierdz/{token}
+  defaults:
+          _controller: App\Controller\RegistrationController::confirmAction
