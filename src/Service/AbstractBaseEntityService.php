@@ -77,8 +77,12 @@ abstract class AbstractBaseEntityService
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save()
+    public function save($entity = null, $user = null )
     {
+        if($entity != null) {
+            $this->setEntity($entity);
+        }
+
         if(!empty($this->entity))
         {
             if(method_exists($this->entity, 'getCreatedAt') && 
@@ -87,9 +91,12 @@ abstract class AbstractBaseEntityService
         
             method_exists($this->entity, 'setUpdateAt') ? 
                 $this->entity->setUpdateAt(): '';
-            
-            method_exists($this->entity, 'setUpdatedBy') ? 
-                $this->entity->setUpdatedBy($this->user) : $this->entity->setUpdatedBy(null);
+
+
+            if(method_exists($this->entity, 'setUpdatedBy')) {
+                $this->entity->setUpdatedBy($user == null? $this->user: $user);
+            }
+
         
             $this->em->persist($this->entity);
             $this->em->flush();

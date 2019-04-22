@@ -20,7 +20,7 @@ class EmailItemService extends AbstractBaseEntityService
       parent::__construct($entityManager, $container);
     }
 
-    public function create(string $template = null, array $data = []) {
+    public function create(string $template = null, array $data = [], User $user = null) {
 
         parent::create();
 
@@ -30,6 +30,14 @@ class EmailItemService extends AbstractBaseEntityService
         } else {
             $this->entity->setTemplate($emailTemplate);
         }
+
+        if(count($data) > 0 ){
+            $this->entity->setData($data);
+        }
+
+        $this->entity->setRecipient($user);
+        $this->entity->setCreatedBy($user);
+
     }
     
 }

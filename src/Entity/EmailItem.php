@@ -111,7 +111,7 @@ class EmailItem extends AbstractBaseEntity
      * @param User|null $recipient
      * @return EmailItem
      */
-    public function setRecipient(?User $recipient): self
+    public function setRecipient($recipient)
     {
         $this->recipient = $recipient;
 

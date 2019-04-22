@@ -72,12 +72,19 @@ class EmailConfirmationListener extends BaseEmailConfirmationListener
         if (null === $user->getConfirmationToken()) {
             $user->setConfirmationToken($this->tokenGenerator->generateToken());
         }
-        
-        $emailItem = $this->emailItemService->create('fos_user_registration_confirm');
-        $this->emailItemService->save($emailItem);
+
+
+        $confirmationUrl = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), UrlGeneratorInterface::ABSOLUTE_URL);
+
+        $data = [
+                'email' => $user->getEmail(),
+                'confirmationUrl' => $confirmationUrl,
+        ];
+
+        $emailItem = $this->emailItemService->create('fos_user_registration_confirm', $data, $user);
+        $this->emailItemService->save($emailItem, $user);
         
         //$this->mailer->sendConfirmationEmailMessage($user);
-
         $this->session->set('fos_user_send_confirmation_email/email', $user->getEmail());
 
         $url = $this->router->generate('fos_user_registration_check_email');
