@@ -34,10 +34,9 @@ class EmailItemService extends AbstractBaseEntityService
         if(count($data) > 0 ){
             $this->entity->setData($data);
         }
-
         $this->entity->setRecipient($user);
         $this->entity->setCreatedBy($user);
-
+        //$this->entity->setUpdateBy($user) in AbstractBaseEntityService;
     }
     
 }
