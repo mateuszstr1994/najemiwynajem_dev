@@ -1,24 +1,37 @@
-{% extends "@FOSUser/layout.html.twig" %}
-
-{% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p></p>
-    <div class="container">
+
+  <div ng-app="niwApp">
+    <div class="container"  ng-controller="fosUserConfirmedController">
         <div class="row">
             <div class="col-sm-12 col-md-7 m-auto">
                 <div class="row mt-5 mb-5">
                     <div class="col-sm-12 heading-block">
                         <h1 class="heading secondary">Rejestracja potwierdzona</h1>
                     </div>
-                    <div class="col-sm-12 ">
-                        <div id="check-email-block">
-                            <p class="text-justify">Dziękujemy za potwierdzenie rejestracji <strong>{{user.username}}</strong>, twoje konto zostało aktywowane.</p>
+                    <div class="col-sm-12">
+                        <div class="default-container-info">
+                            <div class="row">
+                                <div class="col-sm-12 ">
+                                    <p class="text-justify">Dziękujemy za potwierdzenie rejestracji <strong>{{user.username}}</strong>, twoje konto zostało aktywowane.
+                                    </p>
+                                    <p class="font-weight-bold">Przejdż na strone <a href="https://www.google.pl/" id="redirectUrl" >https://www.google.pl/</a></p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class=" text-right" ng-init="countdown()">
+                                        <span id="clearAfterCountDown">Zostaniesz przekierowany za </span><span class="font-weight-bold color-red">{[{counter}]}</span>
+                                        <span class="ml-3 fa-1x">
+                                            <i class="fas fa-sync fa-spin"></i>
+                                        </span>
+                                    </p>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+  </div>
 {% endblock fos_user_content %}

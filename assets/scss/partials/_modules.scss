@@ -226,8 +226,14 @@ nav.navigation-login {
    
 }
 
+.default-container-info{
+    padding: $s-5;
+    background-color: $color-white;
+    @include default-border(1px, solid, $color-gray-dark);
+}
+
 #check-email-block {
-    
+
     padding: $s-5;
     background-color: $color-white;
     transition-duration:2s;
