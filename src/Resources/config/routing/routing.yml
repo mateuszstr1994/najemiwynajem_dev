@@ -3,3 +3,7 @@
 homepage:
     path:     /
     controller: App\Controller\HomePageController::index
+
+app_my_account:
+    path:     /moje-konto
+    controller: App\Controller\AccountController::myAccountAction

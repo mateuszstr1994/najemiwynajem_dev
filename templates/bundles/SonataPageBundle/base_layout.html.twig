@@ -23,7 +23,6 @@ file that was distributed with this source code.
             {% block stylesheets %}
                 {# 'app' must match the first argument to addEntry() in webpack.config.js #}
                 {{ encore_entry_link_tags('app') }}
-                
             {% endblock %}
         {% endblock %}
     </head>
@@ -38,7 +37,6 @@ file that was distributed with this source code.
     {% endblock %}
 
     {% block sonata_page_asset_footer_my %}
-    
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             {{ encore_entry_script_tags('appAngular') }}

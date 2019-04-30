@@ -1,9 +1,9 @@
 ## YAML Template.
 ---
 services:
-            
+        
     header.default.block:
-        class: App\Block\HeaderDefaulBlockService
+        class: App\Block\Header\BaseHeaderBlockService
         public: true
         arguments:
             - 'header.default.block'
@@ -11,22 +11,22 @@ services:
             - '@service_container'
         tags:
             - { name: sonata.block }
-            
-    user.authenticated.menu.block:
-        class: App\Block\UserauthenticatedMenuBlockService
+
+    user.unauthenticated.menu.block:
+        class: App\Block\Header\UserUnauthenticatedMenuBlockService
         public: true
         arguments:
-            - 'user.authenticated.menu.block'
+            - 'user.unauthenticated.menu.block'
             - '@templating'
             - '@service_container'
         tags:
             - { name: sonata.block }
     
-    user.unauthenticated.menu.block:
-        class: App\Block\UserUnauthenticatedMenuBlockService
+    sidebar.menu.block:
+        class: App\Block\Sidebar\SidebarMenuBlockService
         public: true
         arguments:
-            - 'user.unauthenticated.menu.block'
+            - 'sidebar.menu.block'
             - '@templating'
             - '@service_container'
         tags:

@@ -18,7 +18,7 @@ form.default-form {
     legend{
         @include default-border(2px, solid, $color-dark-blue, bottom);
         font-weight: $bold; 
-        font-size: $font-size-big2;
+        font-size: $font-size-big;
         margin-bottom:$s-2;
     }
     
@@ -264,7 +264,40 @@ nav.navigation-login {
         background-color: $color-blue;
         color:$color-white
     }
-    
 }
 
 
+
+#menu{
+    display:flex;
+    flex-direction: row;
+    margin-bottom:0px;
+    align-items: center;
+    
+    
+    
+/*    :not(:first-child) {
+        margin-left:$s-3;
+    }*/
+
+    li {
+        padding-left:$s-2;
+        padding-right:$s-2;
+        list-style: none;
+    }
+}
+
+
+#container-main {
+    width:100%;
+    display: grid;
+    grid-template-columns: 20% 1fr; 
+}
+
+#container-sidebar {
+
+}
+
+#container-content {
+ 
+}

@@ -44,7 +44,7 @@ class UserAdmin extends AbstractAdmin
         $this->formOptions['data_class'] = $this->getClass();
 
         $options = $this->formOptions;
-        $options['validation_groups'] = (!$this->getSubject() || null === $this->getSubject()->getId()) ? 'Registration' : 'Profile';
+        $options['validation_groups'] = (!$this->getSubject() || null === $this->getSubject()->getId()) ? 'Registration' : 'Account';
 
         $formBuilder = $this->getFormContractor()->getFormBuilder($this->getUniqid(), $options);
 

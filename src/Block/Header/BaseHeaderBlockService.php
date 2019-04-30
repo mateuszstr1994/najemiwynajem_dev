@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Block;
+namespace App\Block\Header;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -12,7 +12,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\BaseBlockService;
 
-class HeaderDefaulBlockService extends BaseBlockService
+class BaseHeaderBlockService extends BaseBlockService
 {
     public function getName()
     {

@@ -7,6 +7,7 @@
 
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
+
 require('../scss/boostrap.scss');
 require('../scss/main.scss');
 require('@fortawesome/fontawesome-free/css/all.min.css');
@@ -14,7 +15,7 @@ require('@fortawesome/fontawesome-free/css/all.min.css');
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
 require('bootstrap');
-require('../js/animation.js');
 
+require('../js/animation.js');
 require('@fortawesome/fontawesome-free/js/all.js');
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
